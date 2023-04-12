@@ -97,7 +97,7 @@ async function onListClick() {
 
     //   if (restart == '') {
 
-    var clearRsp = await batchUpdateSheet(resource)
+    var clearRsp = await clearSheet(shtId)
 
     var appendRsp = await appendSheetRow(['Subject', 'Last Message Date', 'Message Count', 'Labels', (attachment != '' ? "Nbr Attachments" : ""), (attachment != '' ? "Size (mb)" : "")], search)
         // currentSheet.clearContents().appendRow(['Subject', 'Last Message Date', 'Message Count', 'Labels', (attachment != '' ? "Nbr Attachments" : ""), (attachment != '' ? "Size (mb)" : "")])
