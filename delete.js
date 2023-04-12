@@ -82,7 +82,7 @@ async function onListClick() {
       
     var clearRsp = await clearSheet(shtId)
 
-    var appendRsp = await appendSheetRow(['Subject', 'Last Message Date', 'Message Count', 'Labels', (attachment != '' ? "Nbr Attachments" : ""), (attachment != '' ? "Size (mb)" : "")], search)
+    var appendRsp = await appendSheetRow(['Subject', 'Last Message Date', 'Message Count', 'Labels', (attachment != '' ? "Nbr Attachments" : ""), (attachment != '' ? "Size (mb)" : "")], 'dan')
     
     var row = 2
     var searchIdx = 0
