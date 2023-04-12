@@ -7,9 +7,11 @@ function btnGmailDeleteHtml() {
 
 }
 
-function loadDropDowns() {
+async function loadDropDowns() {
 
     var labels = await listGmailLabels().result.labels
+
+    console.log('listGmailLabels', labels)
 
     for (var i=0;i<labels.length;i++) {
         let lbl = labels[i]
@@ -18,7 +20,6 @@ function loadDropDowns() {
 
       }
 
-    console.log('listGmailLabels', labels)
 
 
 
