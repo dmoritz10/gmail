@@ -68,11 +68,11 @@ async function onListClick() {
       var search = cat + " label:" + listSpec.label + " before:" + beforeDate 
           + (listSpec.attachment = '' ? '' : attachment);
 
-    var sheets = getSheets()
+    var sheets = await getSheets()
 
     console.log('sheets', sheets)
      
-    var shtId = getSheetId()
+    var shtId = await getSheetId()
     console.log('shtId', shtId)
 
     await renameSheet(shtId, search)
