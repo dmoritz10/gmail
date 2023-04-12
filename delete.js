@@ -79,23 +79,16 @@ async function onListClick() {
 
     await renameSheet(shtId, search)
 
-        //   currentSheet.setName(search)
-      
-      var threadsToPurge = []
-      var listThreads = []
+    var threadsToPurge = []
+    var listThreads = []
       
     var clearRsp = await clearSheet(shtId)
 
-    console.log('search', search)
-
     var appendRsp = await appendSheetRow(['Subject', 'Last Message Date', 'Message Count', 'Labels', (attachment != '' ? "Nbr Attachments" : ""), (attachment != '' ? "Size (mb)" : "")], search)
-        // currentSheet.clearContents().appendRow(['Subject', 'Last Message Date', 'Message Count', 'Labels', (attachment != '' ? "Nbr Attachments" : ""), (attachment != '' ? "Size (mb)" : "")])
-        var row = 2
-        var searchIdx = 0
-    //   } else {
-    //     var row = 2 + restart*1
-    //     var searchIdx = restart*1
-    //   }
+    
+    var row = 2
+    var searchIdx = 0
+    
 
     // var threads = function listGmailThreads(userId, search, callback) {
     //     var getPageOfThreads = function (request, result) {
@@ -134,10 +127,11 @@ async function onListClick() {
         //   GmailApp.search(search, searchIdx, 500);
     //      if (attachment != '') {var allMsgs = GmailApp.getMessagesForThreads(threads)}  // somehow this greatly speeds up the threads[i].getMessages() command
           if (threads.length == 0) {return 'No Gmails match the criteria given: ' + formatlistSpec(listSpec)}
-           console.log('search')
+           console.log('search', search, threads.length, age)
           searchIdx = searchIdx + threads.length
                 
           for (var i=0; i<threads.length; i++) {
+            console.log('i', threads[i], threads[i].getLastMessageDate() < age)
             if (threads[i].getLastMessageDate() < age) {
               var msgLabels = []
               var msgNbrAttachments = 0
