@@ -9,7 +9,7 @@ function btnGmailDeleteHtml() {
 
 function loadDropDowns() {
 
-    var labels = listGmailLabels()
+    var labels = listGmailLabels().result.labels
 
     for (var i=0;i<labels.length;i++) {
         let lbl = labels[i]
