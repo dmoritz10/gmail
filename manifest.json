@@ -1,0 +1,21 @@
+{
+	"name" : "Gmail Companion",
+	"short_name" : "Gmail",
+	"description" : "",
+	"theme_color" : "#eeefef",
+	"background_color" : "#eeefef",
+	"start_url" : "https://dmoritz10.github.io/travel/",
+	"display" : "standalone",
+	"splash_pages": null,
+    "icons": [
+		{
+		"src": "images/icons/travel 144x144.png",
+		"sizes": "144x144",
+		"type": "image/png"
+		},
+		{
+		"src": "images/icons/travel 512x512.png",
+		"sizes": "512x512",
+		"type": "image/png"
+	}]
+}
