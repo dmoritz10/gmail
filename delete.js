@@ -125,7 +125,7 @@ async function onListClick() {
         //   GmailApp.search(search, searchIdx, 500);
     //      if (attachment != '') {var allMsgs = GmailApp.getMessagesForThreads(threads)}  // somehow this greatly speeds up the threads[i].getMessages() command
           if (threads.length == 0) {return 'No Gmails match the criteria given: ' + formatlistSpec(listSpec)}
-           console.log('search', search, threads.length, age)
+           console.log('search', search, threads, threads.length, age)
           searchIdx = searchIdx + threads.length
                 
           for (var i=0; i<threads.length; i++) {
