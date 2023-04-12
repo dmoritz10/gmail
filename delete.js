@@ -21,6 +21,11 @@ async function loadDropDowns() {
 
 }
 
+async function onDeleteClick() {
+
+
+}
+
 async function onListClick() {
 
     var category_selected = $('#gmail-category-select').val();
