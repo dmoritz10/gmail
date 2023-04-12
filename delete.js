@@ -42,7 +42,7 @@ async function onListClick() {
         var age = new Date(listSpec.date.replace('-','/','g'));
       }
       
-      var beforeDate  = Utilities.formatDate(age, Session.getTimeZone(), "yyyy-MM-dd");
+      var beforeDate  = age.getFullYear() +'-'+ age.getMonth()+1 +'-'+ age.getDate();
     
       if (listSpec.category == "") {
         var cat = ""
