@@ -103,7 +103,7 @@ jQuery(function ($) {
             // Home tab
 
             // $('#btnSignout')            .button().click(btnSignoutHtml);
-            $('#btnCountries')          .button().click(btnCountriesHtml);
+            $('#btnGmailDelete')        .button().click(btnGmailDeleteHtml);
             $('#btnTrips')              .button().click(listTrips);
             $('#btnReservations')       .click(listReservations);
             $('#btnPlaces')             .click(btnPlacesHtml);
