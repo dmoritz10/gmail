@@ -109,31 +109,31 @@ async function onListClick() {
     //     var searchIdx = restart*1
     //   }
 
-    var threads = function listGmailThreads(userId, search, callback) {
-        var getPageOfThreads = function (request, result) {
-          request.execute(function (resp) {
-            result = result.concat(resp.threads);
-            var nextPageToken = resp.nextPageToken;
-            if (nextPageToken) {
-              request = gapi.client.gmail.users.threads.list({
-                userId: userId,
-                q: query,
-                pageToken: nextPageToken,
-              });
-              getPageOfThreads(request, result);
-            } else {
-              callback(result);
-            }
-          });
-        };
-        var request = gapi.client.gmail.users.threads.list({
-          userId: userId,
-          q: query,
-        });
-        getPageOfThreads(request, []);
-      };
+    // var threads = function listGmailThreads(userId, search, callback) {
+    //     var getPageOfThreads = function (request, result) {
+    //       request.execute(function (resp) {
+    //         result = result.concat(resp.threads);
+    //         var nextPageToken = resp.nextPageToken;
+    //         if (nextPageToken) {
+    //           request = gapi.client.gmail.users.threads.list({
+    //             userId: userId,
+    //             q: query,
+    //             pageToken: nextPageToken,
+    //           });
+    //           getPageOfThreads(request, result);
+    //         } else {
+    //           callback(result);
+    //         }
+    //       });
+    //     };
+    //     var request = gapi.client.gmail.users.threads.list({
+    //       userId: userId,
+    //       q: query,
+    //     });
+    //     getPageOfThreads(request, []);
+    //   };
 
-      threads()
+    //   threads()
 
       
     
