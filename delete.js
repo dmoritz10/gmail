@@ -82,22 +82,9 @@ async function onListClick() {
       var threadsToPurge = []
       var listThreads = []
       
-      
-      var resource = [
-          {
-            "updateCells": {
-              "range": {
-                "sheetId": shtId
-              },
-              "fields": "*"
-            }
-          }
-        ]
-      ;
-
-    //   if (restart == '') {
-
     var clearRsp = await clearSheet(shtId)
+
+    console.log('search', search)
 
     var appendRsp = await appendSheetRow(['Subject', 'Last Message Date', 'Message Count', 'Labels', (attachment != '' ? "Nbr Attachments" : ""), (attachment != '' ? "Size (mb)" : "")], search)
         // currentSheet.clearContents().appendRow(['Subject', 'Last Message Date', 'Message Count', 'Labels', (attachment != '' ? "Nbr Attachments" : ""), (attachment != '' ? "Size (mb)" : "")])
