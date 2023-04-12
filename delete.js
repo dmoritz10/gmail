@@ -9,6 +9,9 @@ function btnGmailDeleteHtml() {
 
 async function loadDropDowns() {
 
+    console.log('listGmailLabels', await listGmailLabels())
+
+
     var labels = await listGmailLabels().result.labels
 
     console.log('listGmailLabels', labels)
