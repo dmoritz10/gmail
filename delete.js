@@ -118,7 +118,7 @@ async function onListClick() {
     
     //  try {
         do {
-          var threads = gapi.client.gmail.users.threads.list({
+          var threads = await gapi.client.gmail.users.threads.list({
             userId: 'me',
             q: search,
           });
