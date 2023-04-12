@@ -7,6 +7,7 @@ const DISCOVERY = ['https://sheets.googleapis.com/$discovery/rest?version=v4',
                    'https://gmail.googleapis.com/$discovery/rest?version=v1', 
                    'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest'
                   ];
+const SS        = 'Gmail Companion'
 
 /**
  * The google libraries are loaded, and ready for action!
@@ -81,7 +82,7 @@ async function runApp() {
 
   user = Goth.user()
 
-  var rtn = await getSSId('Travel Companion');
+  var rtn = await getSSId(SS);
 
   if (rtn.fileId) {spreadsheetId = rtn.fileId}
   else {

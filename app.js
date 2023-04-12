@@ -102,9 +102,13 @@ jQuery(function ($) {
          
             // Home tab
 
-            // $('#btnSignout')            .button().click(btnSignoutHtml);
             $('#btnGmailDelete')        .button().click(btnGmailDeleteHtml);
             ;
+            // Gmail Delete tab
+
+            $('#sidebar-delete-button').click(onDeleteClick);
+            $('#sidebar-exit-button').click(goHome());
+            $('#sidebar-list-button').click(onListClick);
             
  
             $('.modal').on('shown.bs.modal', function () {
