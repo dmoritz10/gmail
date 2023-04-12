@@ -83,8 +83,7 @@ async function onListClick() {
       var listThreads = []
       
       
-      var resource = {
-        "requests": [
+      var resource = [
           {
             "updateCells": {
               "range": {
@@ -94,7 +93,7 @@ async function onListClick() {
             }
           }
         ]
-      };
+      ;
 
     //   if (restart == '') {
 
