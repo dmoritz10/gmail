@@ -13,7 +13,7 @@ async function loadDropDowns() {
     var labels = l.result.labels
 
     for (var i=0;i<labels.length;i++) {
-        let l = labels[i].name.replace('CATEGORY_', '').toLowerCase()
+        let l = labels[i].name.replace('CATEGORY_', '').replace('DRAFT', 'DRAFTS').toLowerCase()
         let lbl = l.charAt(0).toUpperCase() + l.slice(1)
         if (labels[i].type == 'user')   $('#gmail-label-select').append('<option>'+lbl+'</option>')
         if (labels[i].type == 'system') $('#gmail-category-select').append('<option>'+lbl+'</option>')
@@ -122,12 +122,12 @@ async function onListClick() {
 
     // var search = 'in:inbox label: before:2023-04-13'
         do {
-          var threads = await gapi.client.gmail.users.threads.list({
+          var response = await gapi.client.gmail.users.threads.list({
             userId: 'me',
             q: search,
           });
-        //   GmailApp.search(search, searchIdx, 500);
-    //      if (attachment != '') {var allMsgs = GmailApp.getMessagesForThreads(threads)}  // somehow this greatly speeds up the threads[i].getMessages() command
+
+          var threads = response.result.threads
           if (threads.length == 0) {return 'No Gmails match the criteria given: ' + formatlistSpec(listSpec)}
            console.log('search', search, threads, threads.length, age)
           searchIdx = searchIdx + threads.length
