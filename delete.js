@@ -1,5 +1,6 @@
 
 function btnGmailDeleteHtml() {
 
-    gotoTab('Gmail Delete')
+    gotoTab('GmailDelete')
+
 }
