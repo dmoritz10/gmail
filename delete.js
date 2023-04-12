@@ -75,7 +75,7 @@ async function onListClick() {
     var shtId = getSheetId()
     console.log('shtId', shtId)
 
-    renameSheet(shtId, search)
+    await renameSheet(shtId, search)
 
         //   currentSheet.setName(search)
       
