@@ -1,5 +1,5 @@
 
 function btnGmailDeleteHtml() {
 
-    console.log('hi dan')
+    gotoTab('Gmail Delete')
 }
