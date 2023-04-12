@@ -2,9 +2,10 @@
 
 const API_KEY   = 'AIzaSyCqyn9nW8Uo15autmsv6qGfpVenoZ9lRUY'  
 const CLI_ID    = '922727887494-n8kcnouuajm7f9es4t4l52crt0rjni7b.apps.googleusercontent.com'  
-const SCOPES    = 'https://mail.google.com https://www.googleapis.com/auth/drive'; // Space delimited if more than one
-const DISCOVERY = ['https://gmail.googleapis.com/$discovery/rest?version=v1', 
-                  'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest'
+const SCOPES    = 'https://www.googleapis.com/auth/spreadsheets https://mail.google.com https://www.googleapis.com/auth/drive'; // Space delimited if more than one
+const DISCOVERY = ['https://sheets.googleapis.com/$discovery/rest?version=v4',
+                   'https://gmail.googleapis.com/$discovery/rest?version=v1', 
+                   'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest'
                   ];
 
 /**
