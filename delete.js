@@ -1,14 +1,25 @@
 
 function btnGmailDeleteHtml() {
 
+    loadDropDowns()
+
+    gotoTab('GmailDelete')
+
+}
+
+function loadDropDowns() {
+
     var labels = listGmailLabels()
 
     for (var i=0;i<labels.length;i++) {
-        $('#gmail-label-select').append('<option>'+labels[i]+'</option>')
+        let lbl = labels[i]
+        if (lbl.type == 'user') $('#gmail-label-select').append('<option>'+labels[i].name+'</option>')
+        if (lbl.type == 'system') $('#gmail-category-select').append('<option>'+labels[i].name+'</option>')
+
       }
 
     console.log('listGmailLabels', labels)
 
-    gotoTab('GmailDelete')
+
 
 }
