@@ -1,7 +1,7 @@
 
 function btnGmailDeleteHtml() {
 
-    console.log('listGmailLabels', listGmailLabels)
+    console.log('listGmailLabels', listGmailLabels())
 
     gotoTab('GmailDelete')
 
