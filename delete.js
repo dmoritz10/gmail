@@ -122,62 +122,41 @@ async function onListClick() {
 
     // var search = 'in:inbox label: before:2023-04-13'
         do {
-          var response = await gapi.client.gmail.users.threads.list({
-            userId: 'me',
-            q: search,
-          });
+            var responseList = await gapi.client.gmail.users.threads.list({
+                userId: 'me',
+                q: search,
+                maxResults: 500
+            });
 
-          var threads = response.result.threads
-          if (threads.length == 0) {return 'No Gmails match the criteria given: ' + formatlistSpec(listSpec)}
-           console.log('search', search, threads, threads.length, age)
-          searchIdx = searchIdx + threads.length
-                
-          for (var i=0; i<threads.length; i++) {
-            console.log('i', threads[i], threads[i].getLastMessageDate() < age)
-            if (threads[i].getLastMessageDate() < age) {
-              var msgLabels = []
-              var msgNbrAttachments = 0
-              var msgSizeAttachments = 0
-              for (var j=0;j<threads[i].getLabels().length;j++) {
-                msgLabels.push(threads[i].getLabels()[j].getName())
-              }
-              
-              if (attachment != '') {
-                var msgs = threads[i].getMessages()
-                var sendTos = ''
-                for (var j=0;j<msgs.length;j++) {
-                  var attachments = msgs[j].getAttachments();
-                  for (var k = 0; k < attachments.length; k++) {
-                    msgNbrAttachments++
-                    msgSizeAttachments += attachments[k].getSize()
-                 }
-                 
-                 console.log(msgs[j].getTo())
-               sendTos += (sendTos == '' ? '' : ',') + msgs[j].getTo()
-               }
-             }
-             
-              listThreads.push([
-                threads[i].getFirstMessageSubject(), 
-                threads[i].getLastMessageDate(), 
-    //            threads[i].getMessageCount(), 
-                '=hyperlink("' + "https://mail.google.com/mail/u/0/#all/" + threads[i].getId() + '","' + threads[i].getMessageCount() + '")',
-                msgLabels.join(', '),
-                msgNbrAttachments > 0 ? msgNbrAttachments : '',
-                msgNbrAttachments > 0 ? msgSizeAttachments / Math.pow(1024, 2) : '',
-                sendTos == '' ? '' : sendTos
-              ])
-              threadsToPurge.push(threads[i])
+            var threads = responseList.result.threads
+            if (threads.length == 0) {return 'No Gmails match the criteria given: ' + formatlistSpec(listSpec)}
+            console.log('search', search, threads, threads.length, age)
+            searchIdx = searchIdx + threads.length
+                    
+            for (var i=0; i<threads.length; i++)    {
+
+                let thread = threads[i]
+
+                let responseGet = await gapi.client.gmail.users.threads.get({
+                    userId: 'me',
+                    id: thread.id,
+                    format: 'full'
+                });
+
+                console.log('responseGet', responseGet)
+
             }
-          }
+
+          
+
         console.log('process threads')
         // currentSheet.getRange(row, 1, listThreads.length, listThreads[0].length).setValues(listThreads)
         // currentSheet.getRange(1, 1, 1, 1).setNote(searchIdx)
         
         row += listThreads.length
         
-        console.log('threadsToPurge', threadsToPurge)
-        console.log(threadsToPurge.length)
+        // console.log('threadsToPurge', threadsToPurge)
+        // console.log(threadsToPurge.length)
         
         listThreads = []
         } while (threads.length == 500)
