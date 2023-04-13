@@ -120,8 +120,9 @@ async function onListClick() {
         do {
             var responseList = await gapi.client.gmail.users.threads.list({
                 userId: 'me',
-                q: search,
-                maxResults: 500
+                // maxResults: 500,
+                q: search
+                
             });
 
             console.log('responseList', responseList)
@@ -139,7 +140,7 @@ async function onListClick() {
                 let responseGet = await gapi.client.gmail.users.threads.get({
                     userId: 'me',
                     id: thread.id,
-                    format: 'full'
+                    format: 'metadata'
                 });
 
                 console.log('responseGet', responseGet)
