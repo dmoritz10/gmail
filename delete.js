@@ -143,7 +143,7 @@ async function onListClick() {
                     format: 'metadata'
                 });
 
-                console.log('responseGet', i, thread.id, thread.length, responseGet)
+                console.log('responseGet', i, thread.id, responseGet.result.messages.length, responseGet)
 
             }
 
