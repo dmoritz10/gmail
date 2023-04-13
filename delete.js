@@ -117,10 +117,6 @@ async function onListClick() {
     //   threads()
 
       
-    
-    //  try {
-
-    // var search = 'in:inbox label: before:2023-04-13'
         do {
             var responseList = await gapi.client.gmail.users.threads.list({
                 userId: 'me',
