@@ -124,7 +124,10 @@ async function onListClick() {
                 maxResults: 500
             });
 
+            console.log('responseList', responseList)
             var threads = responseList.result.threads
+
+            console.log('threads', threads)
             if (threads.length == 0) {return 'No Gmails match the criteria given: ' + formatlistSpec(listSpec)}
             console.log('search', search, threads, threads.length, age)
             searchIdx = searchIdx + threads.length
