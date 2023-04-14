@@ -140,9 +140,9 @@ async function onListClick() {
 
                 console.log('responseGet', i, responseGet.result.messages.length, responseGet)
 
-                console.log('internalDate', new Date(msgs[0].internalDate))
+                console.log('internalDate', DateTime.fromMillis({milliseconds: msgs[0].internalDate}))
 
-                var mostRecentMsg = new Date(msgs[msgs.length-1].internalDate)
+                // var mostRecentMsg = new Date(msgs[msgs.length-1].internalDate)
 
                 console.log('mostRecentMsg', mostRecentMsg)
 
@@ -160,7 +160,7 @@ async function onListClick() {
         // console.log(threadsToPurge.length)
         
         listThreads = []
-        } while (threads.length == maxResults)
+        } while (threads.length == 123456)
         
         /*
         // currentSheet.getRange(1, 1, 1, 1).clearNote()
