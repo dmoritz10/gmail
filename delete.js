@@ -140,10 +140,10 @@ async function onListClick() {
                 let responseGet = await gapi.client.gmail.users.threads.get({
                     userId: 'me',
                     id: thread.id,
-                    format: 'metadata'
+                    format: 'full'
                 });
 
-                console.log('responseGet', i, thread.id, responseGet.result.messages.length, responseGet)
+                console.log('responseGet', i, responseGet.result.messages.length, responseGet)
 
             }
 
