@@ -71,10 +71,6 @@ async function onListClick() {
       var search = cat + " label:" + listSpec.label + " before:" + beforeDate 
           + (listSpec.attachment = '' ? '' : attachment);
 
-    var sheets = await getSheets()
-
-    console.log('sheets', sheets)
-     
     var shtId = await getSheetId()
     console.log('shtId', shtId)
 
@@ -117,11 +113,12 @@ async function onListClick() {
 
     //   threads()
 
+        var maxResults = 100
       
         do {
             var responseList = await gapi.client.gmail.users.threads.list({
                 userId: 'me',
-                // maxResults: 500,
+                maxResults: maxResults,
                 q: search
                 
             });
@@ -160,7 +157,7 @@ async function onListClick() {
         // console.log(threadsToPurge.length)
         
         listThreads = []
-        } while (threads.length == 500)
+        } while (threads.length == maxResults)
         
         /*
         // currentSheet.getRange(1, 1, 1, 1).clearNote()
