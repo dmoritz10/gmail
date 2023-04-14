@@ -45,7 +45,7 @@ async function onListClick() {
       
       var beforeDate  = age.getFullYear() +'-'+ age.getMonth()*1+1 +'-'+ age.getDate();
 
-      console.log('beforeDate', beforeDate, age.getFullYear()), age.getMonth()*1+1, age.getDate())()
+      console.log('beforeDate', beforeDate, age.getFullYear(), age.getMonth()*1+1, age.getDate())
       var beforeDate = "2023-04-13"
     
       if (listSpec.category == "") {
