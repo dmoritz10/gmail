@@ -142,6 +142,7 @@ async function onListClick() {
 
                 console.log('internalDate', DateTime.fromMillis(msgs[0].internalDate*1))
 
+                console.log('new Date', new Date(msgs[0].internalDate*1))
                 var mostRecentMsg = DateTime.fromMillis(msgs[0].internalDate*1)
 
                 console.log('mostRecentMsg', mostRecentMsg)
