@@ -110,7 +110,7 @@ async function onListClick() {
 
     //   threads()
 
-        var maxResults = 100
+        var maxResults = 25
       
         do {
             var responseList = await gapi.client.gmail.users.threads.list({
@@ -140,9 +140,9 @@ async function onListClick() {
 
                 console.log('responseGet', i, responseGet.result.messages.length, responseGet)
 
-                console.log('internalDate', DateTime.fromMillis(msgs[0].internalDate))
+                console.log('internalDate', DateTime.fromMillis(msgs[0].internalDate*1))
 
-                // var mostRecentMsg = new Date(msgs[msgs.length-1].internalDate)
+                var mostRecentMsg = DateTime.fromMillis(msgs[0].internalDate*1)
 
                 console.log('mostRecentMsg', mostRecentMsg)
 
