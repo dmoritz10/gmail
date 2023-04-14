@@ -45,8 +45,6 @@ async function onListClick() {
       
       var beforeDate  = age.getFullYear() + '-' + (age.getMonth()*1+1)+'' + '-' + age.getDate()+'';
 
-      console.log('beforeDate', beforeDate, age.getFullYear(), age.getMonth()*1+1, age.getDate())
-    
       if (listSpec.category == "") {
         var cat = ""
       }
@@ -72,7 +70,6 @@ async function onListClick() {
           + (listSpec.attachment = '' ? '' : attachment);
 
     var shtId = await getSheetId()
-    console.log('shtId', shtId)
 
     await renameSheet(shtId, 'dan')
 
@@ -123,10 +120,8 @@ async function onListClick() {
                 
             });
 
-            console.log('responseList', responseList)
             var threads = responseList.result.threads
 
-            console.log('threads', threads)
             if (threads.length == 0) {return 'No Gmails match the criteria given: ' + formatlistSpec(listSpec)}
             console.log('search', search, threads, threads.length, age)
             searchIdx = searchIdx + threads.length
@@ -141,7 +136,15 @@ async function onListClick() {
                     format: 'full'
                 });
 
+                let msgs = responseGet.result.messages
+
                 console.log('responseGet', i, responseGet.result.messages.length, responseGet)
+
+                console.log('internalDate', new Date(msgs[0].internalDate))
+
+                var mostRecentMsg = new Date(msgs[msgs.length-1].internalDate)
+
+                console.log('mostRecentMsg', mostRecentMsg)
 
             }
 
