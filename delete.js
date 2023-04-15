@@ -175,7 +175,7 @@ async function onListClick() {
         } while (threads.length == maxResults)
 
 
-        var response = updateSheet(listThreads, 'dan')
+        var response = updateSheet('dan', listThreads)
         
         /*
         // currentSheet.getRange(1, 1, 1, 1).clearNote()
