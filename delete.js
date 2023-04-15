@@ -77,9 +77,10 @@ async function onListClick() {
 
     var clearRsp = await clearSheet(shtObj.sheetId)
 
-    var listThreads = ['Subject', 'Last Message Date', 'Message Count', 'Labels', 'Status', 'Message Ids']
+    var listThreads = []
+    listThreads.push(['Subject', 'Last Message Date', 'Message Count', 'Labels', 'Status', 'Message Ids'])
                     
-    var maxResults = 50
+    var maxResults = 10
     var npt
     var startTime = new Date()
     var msgCntr = 0
