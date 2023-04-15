@@ -111,14 +111,18 @@ async function onListClick() {
     //   threads()
 
         var maxResults = 100
+        var npt = ''
       
         do {
             var responseList = await gapi.client.gmail.users.threads.list({
                 userId: 'me',
+                pageToken: npt,
                 maxResults: maxResults,
                 q: search
                 
             });
+
+            npt = responseList.nextPageToken
 
             var threads = responseList.result.threads
 
@@ -172,7 +176,10 @@ async function onListClick() {
         // console.log(threadsToPurge.length)
         
         // listThreads = []
-        } while (threads.length == maxResults)
+        // } while (threads.length == maxResults)
+
+        console.log('npt', npt)
+    } while (npt)
 
         console.log('listThreads', listThreads)
 
