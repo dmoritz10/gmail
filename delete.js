@@ -144,7 +144,7 @@ async function onListClick() {
 
                 if (mostRecentMsg > age) continue
 
-                console.log('mostRecentMsg', mostRecentMsg, age, mostRecentMsg > age)
+                // console.log('mostRecentMsg', mostRecentMsg, age, mostRecentMsg > age)
 
                 let hdrs = msgs[0].payload.headers
 
@@ -152,7 +152,7 @@ async function onListClick() {
                 let date = hdrs.find(x => x.name.toLowerCase() === "date").value
                 let msgIds = msgs.map(a => a.id);
 
-                console.log('msgs', subject, date, msgIds)
+                // console.log('msgs', subject, date, msgIds)
 
                 listThreads.push([
                     subject,
@@ -173,6 +173,8 @@ async function onListClick() {
         
         // listThreads = []
         } while (threads.length == maxResults)
+
+        console.log('listThreads', listThreads)
 
 
         var response = updateSheet('dan', listThreads)
