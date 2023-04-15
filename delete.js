@@ -122,7 +122,7 @@ async function onListClick() {
                 JSON.stringify(msgIds)
             ])
 
-            console.log('progress', i, thread.length, listThreads.length )
+            console.log('progress', i, msgIds.length, listThreads.length )
 
         }
 
