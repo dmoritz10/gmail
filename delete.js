@@ -137,7 +137,7 @@ async function onListClick() {
             console.log('progress', i, msgIds.length, msgCntr,  msgCntr * 1000*60 / (new Date() - startTime))
 
         }
-
+console.log('listThreads', listThreads)
         var response = appendSheetRow(shtObj.title, listThreads)
 
         listThreads = []
