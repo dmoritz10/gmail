@@ -122,6 +122,8 @@ async function onListClick() {
                 
             });
 
+            console.log('responseList', responseList)
+
             npt = responseList.nextPageToken
 
             var threads = responseList.result.threads
@@ -161,7 +163,7 @@ async function onListClick() {
                 listThreads.push([
                     subject,
                     date,
-                    msgIds
+                    JSON.stringify(msgIds)
                 ])
 
             }
