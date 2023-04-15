@@ -111,7 +111,7 @@ async function onListClick() {
     //   threads()
 
         var maxResults = 100
-        var npt = ''
+        var npt
       
         do {
             var responseList = await gapi.client.gmail.users.threads.list({
@@ -127,6 +127,7 @@ async function onListClick() {
             // this is a test message
 
             npt = responseList.nextPageToken
+            console.log('responseList', npt, responseList)
 
             var threads = responseList.result.threads
 
