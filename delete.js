@@ -69,99 +69,69 @@ async function onListClick() {
       var search = cat + " label:" + listSpec.label + " before:" + beforeDate 
           + (listSpec.attachment = '' ? '' : attachment);
 
-    var shtId = await getSheetId()
-
-    await renameSheet(shtId, 'dan')
-
-    var threadsToPurge = []
+    
     var listThreads = []
-      
-    var clearRsp = await clearSheet(shtId)
+    var maxResults = 100
+    var npt
 
-    var appendRsp = await appendSheetRow(['Subject', 'Last Message Date', 'Message Count', 'Labels', (attachment != '' ? "Nbr Attachments" : ""), (attachment != '' ? "Size (mb)" : "")], 'dan')
-    
-    var row = 2
-    var searchIdx = 0
-    
+    do {
+        var responseList = await listGmailThreads({
+            userId: 'me',
+            pageToken: npt,
+            maxResults: maxResults,
+            q: search
+            
+        });
 
-    // var threads = function listGmailThreads(userId, search, callback) {
-    //     var getPageOfThreads = function (request, result) {
-    //       request.execute(function (resp) {
-    //         result = result.concat(resp.threads);
-    //         var nextPageToken = resp.nextPageToken;
-    //         if (nextPageToken) {
-    //           request = gapi.client.gmail.users.threads.list({
-    //             userId: userId,
-    //             q: query,
-    //             pageToken: nextPageToken,
-    //           });
-    //           getPageOfThreads(request, result);
-    //         } else {
-    //           callback(result);
-    //         }
-    //       });
-    //     };
-    //     var request = gapi.client.gmail.users.threads.list({
-    //       userId: userId,
-    //       q: query,
-    //     });
-    //     getPageOfThreads(request, []);
-    //   };
+        npt = responseList.result.nextPageToken
 
-    //   threads()
+        var threads = responseList.result.threads
 
-        var maxResults = 100
-        var npt
-      
-        do {
-            var responseList = await listGmailThreads({
-                userId: 'me',
-                pageToken: npt,
-                maxResults: maxResults,
-                q: search
+        if (threads.length == 0) {return 'No Gmails match the criteria given: ' + formatlistSpec(listSpec)}
                 
+        for (var i=0; i<threads.length; i++)    {
+
+            let thread = threads[i]
+
+            let responseGet = await getGmailMessages({
+                userId: 'me',
+                id: thread.id,
+                format: 'full'
             });
 
-            npt = responseList.result.nextPageToken
+            let msgs = responseGet.result.messages
 
-            var threads = responseList.result.threads
+            console.log('msgs', msgs)
 
-            if (threads.length == 0) {return 'No Gmails match the criteria given: ' + formatlistSpec(listSpec)}
-                    
-            for (var i=0; i<threads.length; i++)    {
+            let mostRecentMsg = new Date(msgs[msgs.length-1].internalDate*1)
 
-                let thread = threads[i]
+            if (mostRecentMsg > age) continue
 
-                let responseGet = await getGmailMessages({
-                    userId: 'me',
-                    id: thread.id,
-                    format: 'full'
-                });
+            let hdrs = msgs[0].payload.headers
 
-                let msgs = responseGet.result.messages
+            let subject = hdrs.find(x => x.name.toLowerCase() === "subject").value
+            let date = hdrs.find(x => x.name.toLowerCase() === "date").value
+            let msgIds = msgs.map(a => a.id);
 
-                console.log('msgs', msgs)
+            listThreads.push([
+                subject,
+                mostRecentMsg.getFullYear() + '-' + (mostRecentMsg.getMonth()*1+1)+'' + '-' + mostRecentMsg.getDate()+'',
+                msgIds.length,
+                JSON.stringify(msgs[0].labelIds),
+                'List',
+                JSON.stringify(msgIds)
+            ])
 
-                let mostRecentMsg = new Date(msgs[msgs.length-1].internalDate*1)
-
-                if (mostRecentMsg > age) continue
-
-                let hdrs = msgs[0].payload.headers
-
-                let subject = hdrs.find(x => x.name.toLowerCase() === "subject").value
-                let date = hdrs.find(x => x.name.toLowerCase() === "date").value
-                let msgIds = msgs.map(a => a.id);
-
-                listThreads.push([
-                    subject,
-                    date,
-                    JSON.stringify(msgIds)
-                ])
-
-            }
+        }
 
     } while (npt)
 
-    var response = updateSheet('dan', listThreads)
+    var shtObj = await createSheet(shtObj.sheetId)
+
+    var clearRsp = await clearSheet(shtObj.sheetId)
+
+    listThreads.unshift(['Subject', 'Last Message Date', 'Message Count', 'Labels', 'Status', 'Message Ids']);
+    
+    var response = updateSheet(shtObj.title, listThreads)
 
 }
