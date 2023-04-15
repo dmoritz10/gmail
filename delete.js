@@ -148,8 +148,8 @@ async function onListClick() {
 
                 let hdrs = msgs[0].payload.headers
 
-                let subject = hdrs.find(x => x.name === "Subject").value
-                let date = hdrs.find(x => x.name === "Date").value
+                let subject = hdrs.find(x => x.name.toLowerCase() === "subject").value
+                let date = hdrs.find(x => x.name.toLowerCase() === "date").value
                 let msgIds = msgs.map(a => a.id);
 
                 console.log('msgs', subject, date, msgIds)
