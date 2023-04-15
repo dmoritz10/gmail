@@ -138,11 +138,9 @@ async function onListClick() {
 
                 let msgs = responseGet.result.messages
 
-                console.log('responseGet', i, responseGet.result.messages.length, responseGet)
+                let mostRecentMsg = new Date(msgs[msgs.length-1].internalDate*1)
 
-                console.log('internalDate', new Date(msgs[0].internalDate*1))
-
-                var mostRecentMsg = new Date(msgs[msgs.length-1].internalDate*1)
+                if (mostRecentMsg > age) continue
 
                 console.log('mostRecentMsg', mostRecentMsg, age, mostRecentMsg > age)
 
