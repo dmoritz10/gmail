@@ -110,7 +110,7 @@ async function onListClick() {
 
     //   threads()
 
-        var maxResults = 25
+        var maxResults = 100
       
         do {
             var responseList = await gapi.client.gmail.users.threads.list({
@@ -154,23 +154,28 @@ async function onListClick() {
 
                 console.log('msgs', subject, date, msgIds)
 
-
+                listThreads.push([
+                    subject,
+                    date,
+                    msgIds
+                ])
 
             }
 
-          
-
-        console.log('process threads')
-        // currentSheet.getRange(row, 1, listThreads.length, listThreads[0].length).setValues(listThreads)
+        // console.log('process threads')
+        // // currentSheet.getRange(row, 1, listThreads.length, listThreads[0].length).setValues(listThreads)
         // currentSheet.getRange(1, 1, 1, 1).setNote(searchIdx)
         
-        row += listThreads.length
+        // row += listThreads.length
         
         // console.log('threadsToPurge', threadsToPurge)
         // console.log(threadsToPurge.length)
         
-        listThreads = []
-        } while (threads.length == 123456)
+        // listThreads = []
+        } while (threads.length == maxResults)
+
+
+        var response = updateSheet(listThreads, 'dan')
         
         /*
         // currentSheet.getRange(1, 1, 1, 1).clearNote()
