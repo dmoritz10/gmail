@@ -73,6 +73,7 @@ async function onListClick() {
     var listThreads = []
     var maxResults = 100
     var npt
+    var startTime = new Date()
 
     do {
         var responseList = await listGmailThreads({
@@ -122,7 +123,7 @@ async function onListClick() {
                 JSON.stringify(msgIds)
             ])
 
-            console.log('progress', i, msgIds.length, listThreads.length )
+            console.log('progress', i, msgIds.length, listThreads.length,  listThreads.length * 1000*60 / (new Date() - startTime))
 
         }
 
