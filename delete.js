@@ -69,11 +69,20 @@ async function onListClick() {
       var search = cat + " label:" + listSpec.label + " before:" + beforeDate 
           + (listSpec.attachment = '' ? '' : attachment);
 
-    
-    var listThreads = []
-    var maxResults = 100
+    var createRsp = await createSheet()
+
+    var shtObj = createRsp.result.replies[0].addSheet.properties
+
+    console.log('shtObj', shtObj)
+
+    var clearRsp = await clearSheet(shtObj.sheetId)
+
+    var listThreads = ['Subject', 'Last Message Date', 'Message Count', 'Labels', 'Status', 'Message Ids']
+                    
+    var maxResults = 500
     var npt
     var startTime = new Date()
+    var msgCntr = 0
 
     do {
         var responseList = await listGmailThreads({
@@ -123,23 +132,19 @@ async function onListClick() {
                 JSON.stringify(msgIds)
             ])
 
-            console.log('progress', i, msgIds.length, listThreads.length,  listThreads.length * 1000*60 / (new Date() - startTime))
+            msgCntr += msgIds.length
+
+            console.log('progress', i, msgIds.length, msgCntr,  msgCntr * 1000*60 / (new Date() - startTime))
 
         }
 
+        var response = updateSheet(shtObj.title, listThreads)
+
+        listThreads = []
+
     } while (npt)
 
-    var createRsp = await createSheet()
-
-    var shtObj = createRsp.result.replies[0].addSheet.properties
-
-    console.log('shtObj', shtObj)
-
-    var clearRsp = await clearSheet(shtObj.sheetId)
-
-    listThreads.unshift(['Subject', 'Last Message Date', 'Message Count', 'Labels', 'Status', 'Message Ids']);
-    
-    var response = updateSheet(shtObj.title, listThreads)
+    console.log('run time', i, msgCntr,  (new Date() - startTime) / 1000*60, msgCntr * 1000*60 / (new Date() - startTime))
 
     var response = renameSheet(shtObj.sheetId, search)
 
