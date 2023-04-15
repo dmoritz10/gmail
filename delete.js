@@ -126,8 +126,8 @@ async function onListClick() {
 
             // this is a test message
 
-            npt = responseList.nextPageToken
-            console.log('responseList', npt, responseList)
+            npt = responseList.result.nextPageToken
+            console.log('responseList', npt)
 
             var threads = responseList.result.threads
 
