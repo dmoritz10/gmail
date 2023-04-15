@@ -134,4 +134,6 @@ async function onListClick() {
     
     var response = updateSheet(shtObj.title, listThreads)
 
+    var response = renameSheet(shtObj.sheetId, search)
+
 }
