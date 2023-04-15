@@ -146,7 +146,15 @@ async function onListClick() {
 
                 console.log('mostRecentMsg', mostRecentMsg, age, mostRecentMsg > age)
 
-                
+                let hdrs = msgs[0].payload.headers
+
+                let subject = hdrs.find(x => x.name === "Subject")
+                let date = hdrs.find(x => x.name === "Date")
+                let msgIds = msgs.map(a => a.id);
+
+                console.log('msgs', subject, date, msgIds)
+
+
 
             }
 
