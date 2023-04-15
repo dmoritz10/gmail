@@ -128,6 +128,8 @@ async function onListClick() {
 
     var shtObj = await createSheet()
 
+    console.log('shtObj', shtObj)
+
     var clearRsp = await clearSheet(shtObj.sheetId)
 
     listThreads.unshift(['Subject', 'Last Message Date', 'Message Count', 'Labels', 'Status', 'Message Ids']);
