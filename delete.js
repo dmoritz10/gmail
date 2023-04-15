@@ -126,7 +126,7 @@ async function onListClick() {
 
     } while (npt)
 
-    var shtObj = await createSheet(shtObj.sheetId)
+    var shtObj = await createSheet()
 
     var clearRsp = await clearSheet(shtObj.sheetId)
 
