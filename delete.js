@@ -114,7 +114,7 @@ async function onListClick() {
         var npt
       
         do {
-            var responseList = await gapi.client.gmail.users.threads.list({
+            var responseList = await listGmailThreads({
                 userId: 'me',
                 pageToken: npt,
                 maxResults: maxResults,
@@ -122,24 +122,17 @@ async function onListClick() {
                 
             });
 
-            console.log('responseList', responseList)
-
-            // this is a test message
-
             npt = responseList.result.nextPageToken
-            console.log('responseList', npt)
 
             var threads = responseList.result.threads
 
             if (threads.length == 0) {return 'No Gmails match the criteria given: ' + formatlistSpec(listSpec)}
-            console.log('search', search, threads, threads.length, age)
-            searchIdx = searchIdx + threads.length
                     
             for (var i=0; i<threads.length; i++)    {
 
                 let thread = threads[i]
 
-                let responseGet = await gapi.client.gmail.users.threads.get({
+                let responseGet = await getGmailMessages({
                     userId: 'me',
                     id: thread.id,
                     format: 'full'
@@ -153,15 +146,11 @@ async function onListClick() {
 
                 if (mostRecentMsg > age) continue
 
-                // console.log('mostRecentMsg', mostRecentMsg, age, mostRecentMsg > age)
-
                 let hdrs = msgs[0].payload.headers
 
                 let subject = hdrs.find(x => x.name.toLowerCase() === "subject").value
                 let date = hdrs.find(x => x.name.toLowerCase() === "date").value
                 let msgIds = msgs.map(a => a.id);
-
-                // console.log('msgs', subject, date, msgIds)
 
                 listThreads.push([
                     subject,
@@ -171,45 +160,8 @@ async function onListClick() {
 
             }
 
-        // console.log('process threads')
-        // // currentSheet.getRange(row, 1, listThreads.length, listThreads[0].length).setValues(listThreads)
-        // currentSheet.getRange(1, 1, 1, 1).setNote(searchIdx)
-        
-        // row += listThreads.length
-        
-        // console.log('threadsToPurge', threadsToPurge)
-        // console.log(threadsToPurge.length)
-        
-        // listThreads = []
-        // } while (threads.length == maxResults)
-
-        console.log('npt', npt)
     } while (npt)
 
-        console.log('listThreads', listThreads)
+    var response = updateSheet('dan', listThreads)
 
-
-        var response = updateSheet('dan', listThreads)
-        
-        /*
-        // currentSheet.getRange(1, 1, 1, 1).clearNote()
-          
-        if (listSpec.action == 'delete') {
-    //      var response = ui.alert("Delete Gmail", "Press 'OK' to move " + threadsToPurge.length + ' Gmails to the Trash', ui.ButtonSet.OK_CANCEL);
-    
-    //      if (response.toString().toLowerCase() == 'ok') {
-          if ('ok' == 'ok') {
-            var batchSize = 100 // Process up to 100 threads at once
-            for (j = 0; j < threadsToPurge.length; j+=batchSize) {
-              GmailApp.moveThreadsToTrash(threadsToPurge.slice(j, j+batchSize));
-        console.log('move to trash')
-        console.log(j+batchSize)
-            }
-            return threadsToPurge.length + ' Gmails successfully deleted: ' + formatlistSpec(listSpec)
-    //        ui.alert("Delete Gmail", "Complete", ui.ButtonSet.OK);
-          } else {
-            return 'Gmail Delete canceled' 
-          }
-        }
-*/
 }
