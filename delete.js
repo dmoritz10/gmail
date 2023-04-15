@@ -80,7 +80,7 @@ async function onListClick() {
     var listThreads = []
     listThreads.push(['Subject', 'Last Message Date', 'Message Count', 'Labels', 'Status', 'Message Ids'])
                     
-    var maxResults = 10
+    var maxResults = 500
     var npt
     var startTime = new Date()
     var msgCntr = 0
