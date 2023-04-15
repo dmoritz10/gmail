@@ -99,7 +99,7 @@ async function onListClick() {
                 format: 'full'
             });
 
-            // let msgs = responseGet.result.messages
+            let msgs = responseGet.result.messages
 
             // console.log('msgs', msgs)
 
