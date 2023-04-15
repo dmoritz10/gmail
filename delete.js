@@ -99,9 +99,9 @@ async function onListClick() {
                 format: 'full'
             });
 
-            let msgs = responseGet.result.messages
+            // let msgs = responseGet.result.messages
 
-            console.log('msgs', msgs)
+            // console.log('msgs', msgs)
 
             let mostRecentMsg = new Date(msgs[msgs.length-1].internalDate*1)
 
@@ -121,6 +121,8 @@ async function onListClick() {
                 'List',
                 JSON.stringify(msgIds)
             ])
+
+            console.log('progress', i, thread.length, listThreads.length )
 
         }
 
