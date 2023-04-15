@@ -126,7 +126,9 @@ async function onListClick() {
 
     } while (npt)
 
-    var shtObj = await createSheet()
+    var createRsp = await createSheet()
+
+    var shtObj = createRsp.result.replies[0].addSheet.properties
 
     console.log('shtObj', shtObj)
 
