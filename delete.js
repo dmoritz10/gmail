@@ -139,7 +139,7 @@ async function onListClick() {
 
         }
 console.log('listThreads', listThreads)
-        var response = await appendSheetRow(shtObj.title, listThreads[0])
+        var response = await appendSheetRow(listThreads, shtObj.title])
 
         listThreads = []
 
