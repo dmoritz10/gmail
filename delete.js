@@ -79,7 +79,7 @@ async function onListClick() {
 
     var listThreads = ['Subject', 'Last Message Date', 'Message Count', 'Labels', 'Status', 'Message Ids']
                     
-    var maxResults = 500
+    var maxResults = 50
     var npt
     var startTime = new Date()
     var msgCntr = 0
@@ -138,7 +138,7 @@ async function onListClick() {
 
         }
 
-        var response = updateSheet(shtObj.title, listThreads)
+        var response = appendSheetRow(shtObj.title, listThreads)
 
         listThreads = []
 
