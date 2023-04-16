@@ -88,6 +88,7 @@ async function deleteGmails(shtTitle) {
   var msgIdsCol = shtHdrs.indexOf('Message Ids')
   
   var msgIdsArr = shtArr.map(x => x[msgIdsCol]);
+  var statArr = shtArr.map(x => x[statCol]);
 
   console.log('msgIdsArr',msgIdsCol,  msgIdsArr)
 
@@ -111,7 +112,7 @@ async function deleteGmails(shtTitle) {
       if (pntr < 0) break;
 
       console.log('msgIdsArr[i]', msgIdsArr[pntr])
-      if (msgIdsArr[pntr]) msgArr = msgArr.concat(JSON.parse(msgIdsArr[pntr]))
+      if (msgIdsArr[pntr] && statArr[pntr] != 'Deleted') msgArr = msgArr.concat(JSON.parse(msgIdsArr[pntr]))
 
     }
 
@@ -130,8 +131,8 @@ async function deleteGmails(shtTitle) {
 
     var data =     [
       { 
-        range: '"' + shtTitle + '"!"' + calcRngA1(strPntr + 2, statCol, msgIdArr.length, 1),   
-        values: new Array(msgIdArr.length).fill('Deleted')
+        range: '"' + shtTitle + '"!"' + calcRngA1(strPntr + 2, statCol, msgArr.length, 1),   
+        values: new Array(msgArr.length).fill('Deleted')
       }
     ]
   
