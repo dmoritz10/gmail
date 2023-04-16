@@ -129,7 +129,7 @@ async function deleteGmails(shtTitle) {
 
     if (response.status !=204 ) return
 
-    console.log('values', new Array(msgArr.length).fill('Deleted'))
+    console.log('values', new Array(msgArr.length).fill(['Deleted']))
 
     var data =     [
       {
