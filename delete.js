@@ -73,7 +73,10 @@ async function onDeleteClick() {
 
 async function deleteGmails(sht) {
 
-  console.log('deleteGmails shtId', sht)
+  console.log('deleteGmails shtId 1', JSON.stringify(sht))
+  console.log('deleteGmails shtId 2',  JSON.parse(sht))
+
+  if (!sht) return
 
   var objSht = await openShts(
     [
