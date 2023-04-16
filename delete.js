@@ -49,11 +49,10 @@ async function onDeleteClick() {
         // if (sht.gridProperties.columnCount != 6) continue
 
         let shtTitle = sht.title
-        let shtId = sht.sheetId
 
         inputOptions.push({
           text: shtTitle,
-          value: {title:shtTitle, id:shtId}
+          value: shtTitle
         })
           
       }
@@ -71,7 +70,7 @@ async function onDeleteClick() {
 
 }
 
-async function deleteGmails(sht) {
+async function deleteGmails(shtTitle) {
 
   console.log('deleteGmails shtId 1', JSON.stringify(sht))
   console.log('deleteGmails shtId 2',  JSON.parse(sht))
@@ -80,10 +79,10 @@ async function deleteGmails(sht) {
 
   var objSht = await openShts(
     [
-      { title: sht.title, type: "all" }
+      { title: shtTitle, type: "all" }
     ])
 
-  toast("Deleting Gmails from " + sht.title, 5000)
+  toast("Deleting Gmails from " + shtTitle, 5000)
   var shtHdrs = objSht[sht].colHdrs
   var shtArr = objSht[sht].values
   var statCol = shtHdrs.indexOf('Status')
@@ -126,7 +125,7 @@ async function deleteGmails(sht) {
 
     var data =     [
       { 
-        range: '"' + sht.title + '"!"' + calcRngA1(strPntr + 2, statCol, msgIdArr.length, 1),   
+        range: '"' + shtTitle + '"!"' + calcRngA1(strPntr + 2, statCol, msgIdArr.length, 1),   
         values: nbrArr
       }
     ]
