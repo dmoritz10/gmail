@@ -87,7 +87,7 @@ async function deleteGmails(sht) {
 
   var statArr = shtArr.map(x => x[statCol]);
 
-  let batchSize = 10
+  let batchSize = 3
   let pntr = statArr.length-1
 
   while (true) {
