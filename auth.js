@@ -91,7 +91,7 @@ async function runApp() {
   }
   await initialUI();
 
-  goHome()
+  gotoTab('Home')
     
 }
 
