@@ -25,6 +25,8 @@ async function loadDropDowns() {
 async function onDeleteClick() {
 
 
+
+
 }
 
 async function onListClick() {
@@ -60,6 +62,9 @@ async function onListClick() {
           break;
         case "all":
           var attachment = " has:attachment"
+          break;
+        case "none":
+          var attachment = " -has:attachment"
           break;
         default:
           var attachment = " size:" + listSpec.attachment
