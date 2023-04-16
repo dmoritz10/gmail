@@ -126,19 +126,12 @@ async function deleteGmails(shtTitle) {
       }
     });
 
-    console.log('responseDelete', response)
-
-    return
-
-    if (response.status !=200 ) return
-
-    return
-
+    if (response.status !=204 ) return
 
     var data =     [
       { 
         range: '"' + shtTitle + '"!"' + calcRngA1(strPntr + 2, statCol, msgIdArr.length, 1),   
-        values: nbrArr
+        values: new Array(msgIdArr.length).fill('Deleted')
       }
     ]
   
@@ -148,6 +141,8 @@ async function deleteGmails(shtTitle) {
     }
   
     var response = await batchUpdateSheet(resource)
+
+    break;
       
   }
 
