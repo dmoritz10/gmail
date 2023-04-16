@@ -51,11 +51,13 @@ async function onDeleteClick() {
 
         inputOptions.push({
           text: shtTitle,
-          value: shtId
+          value: sht.shtId
         })
           
       }
 
+      console.log('inputOptions', inputOptions)
+      
       bootbox.prompt({
         title: 'Select Sheet with emails to delete',
         inputType: 'select',
