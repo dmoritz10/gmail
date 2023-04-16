@@ -132,7 +132,7 @@ async function deleteGmails(shtTitle) {
     var data =     [
       { 
         range: '"' + shtTitle + '"!"' + calcRngA1(strPntr + 2, statCol, msgArr.length, 1),   
-        values: new Array(msgArr.length).fill('Deleted')
+        values: [new Array(msgArr.length).fill('Deleted')]
       }
     ]
   
