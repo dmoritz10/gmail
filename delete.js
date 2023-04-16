@@ -108,6 +108,7 @@ async function deleteGmails(shtTitle) {
         let x = msgIdArr.concat(JSON.parse(statArr[pntr]))
         msgIdArr = x
       }
+    }
 
     if (pntr < 0) break
 
