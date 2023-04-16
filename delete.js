@@ -79,6 +79,8 @@ async function deleteGmails(shtTitle) {
       { title: shtTitle, type: "all" }
     ])
 
+    console.log('objSht', objSht)
+
   toast("Deleting Gmails from " + shtTitle, 5000)
   var shtHdrs = objSht[shtTitle].colHdrs
   var shtArr = objSht[shtTitle].values
