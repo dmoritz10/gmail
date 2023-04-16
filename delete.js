@@ -87,7 +87,7 @@ async function deleteGmails(shtTitle) {
   var statCol = shtHdrs.indexOf('Status')
   var msgIdsCol = shtHdrs.indexOf('Message Ids')
   
-  var msgIdsArr = shtArr.map(x => x[msgIdsCol]);
+  var msgIdsArr = shtArr.map(x => x[msgIdsCol]*1);
 
   console.log('msgIdsArr',msgIdsCol,  msgIdsArr)
 
@@ -121,7 +121,7 @@ async function deleteGmails(shtTitle) {
 
     var response = await batchDeleteGmail({
       userId: 'me',
-      request: {
+      resource: {
         "ids": msgArr
       }
     });
