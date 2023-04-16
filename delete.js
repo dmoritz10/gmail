@@ -91,7 +91,7 @@ async function deleteGmails(shtTitle) {
 
   console.log('msgIdsArr',msgIdsCol,  msgIdsArr)
 
-  var batchSize = 1
+  var batchSize = 2
   var pntr = msgIdsArr.length-1
 
   console.log('pntr', pntr)
