@@ -102,7 +102,7 @@ async function deleteGmails(shtTitle) {
 
     for (let i = 0; i<batchSize;i++) {
 
-      pntr = pntr - i
+      pntr--
 
       console.log('i', i, pntr)
 
@@ -130,7 +130,7 @@ async function deleteGmails(shtTitle) {
 
     var data =     [
       {
-        range: "'" + shtTitle + "'!" + calcRngA1(strPntr + 1, statCol + 1, msgArr.length, 1),   
+        range: "'" + shtTitle + "'!" + calcRngA1(pntr + 1, statCol + 1, msgArr.length, 1),   
         values: new Array(msgArr.length).fill(['Deleted'])
       }
     ]
