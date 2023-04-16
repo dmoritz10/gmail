@@ -83,7 +83,7 @@ async function deleteGmails(shtTitle) {
 
   toast("Deleting Gmails from " + shtTitle, 5000)
   var shtHdrs = objSht[shtTitle].colHdrs
-  var shtArr = objSht[shtTitle].values
+  var shtArr = objSht[shtTitle].vals
   var statCol = shtHdrs.indexOf('Status')
 
   var statArr = shtArr.map(x => x[statCol]);
