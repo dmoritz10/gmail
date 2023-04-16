@@ -24,8 +24,46 @@ async function loadDropDowns() {
 
 async function onDeleteClick() {
 
+  var shts = await getSheets()
 
+  var sheets = shts.result.sheets
 
+  console.log('shts', shts)
+
+    if (sheets) {
+
+      var nbrSheets = 0
+      let inputOptions = []
+      inputOptions.push({
+        text: 'Choose sheet ...',
+        value: ''
+      })
+
+    
+      for (var j = 0; j < sheets.length; j++) {
+
+        var sht = sheets[j].properties
+
+        if (sht.gridProperties.columnCount != 6) continue
+
+        let shtTitle = sht.title
+        let shtId = sheetId
+
+        inputOptions.push({
+          text: shtTitle,
+          value: shtId
+        })
+          
+      }
+
+      bootbox.prompt({
+        title: 'Select Sheet with emails to delete',
+        inputType: 'select',
+        inputOptions:inputOptions,
+        callback: function (result) {
+          console.log(result);
+        }
+      });
 
 }
 
@@ -126,7 +164,6 @@ async function onListClick() {
             let hdrs = msgs[0].payload.headers
 
             let subject = hdrs.find(x => x.name.toLowerCase() === "subject").value
-            let date = hdrs.find(x => x.name.toLowerCase() === "date").value
             let msgIds = msgs.map(a => a.id);
 
             listThreads.push([
@@ -140,7 +177,7 @@ async function onListClick() {
 
             msgCntr += msgIds.length
 
-            console.log('progress', i, msgIds.length, msgCntr,  msgCntr * 1000*60 / (new Date() - startTime))
+            console.log('progress', i, msgIds.length, msgCntr,  parseInt(msgCntr * 1000*60 / (new Date() - startTime)))
 
         }
         console.log('listThreads', listThreads)
@@ -150,7 +187,7 @@ async function onListClick() {
 
     } while (npt)
 
-    console.log('run time', i, msgCntr,  (new Date() - startTime) / 1000*60, msgCntr * 1000*60 / (new Date() - startTime))
+    console.log('run time', i, msgCntr,  parseInt((new Date() - startTime) / (1000*60)), parseInt((msgCntr * 1000*60) / (new Date() - startTime)))
 
     var response = renameSheet(shtObj.sheetId, search)
 
