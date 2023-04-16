@@ -72,10 +72,7 @@ async function onDeleteClick() {
 
 async function deleteGmails(shtTitle) {
 
-  console.log('deleteGmails shtId 1', JSON.stringify(sht))
-  console.log('deleteGmails shtId 2',  JSON.parse(sht))
-
-  if (!sht) return
+  if (!shtTitle) return
 
   var objSht = await openShts(
     [
@@ -83,8 +80,8 @@ async function deleteGmails(shtTitle) {
     ])
 
   toast("Deleting Gmails from " + shtTitle, 5000)
-  var shtHdrs = objSht[sht].colHdrs
-  var shtArr = objSht[sht].values
+  var shtHdrs = objSht[shtTitle].colHdrs
+  var shtArr = objSht[shtTitle].values
   var statCol = shtHdrs.indexOf('Status')
 
   var statArr = shtArr.map(x => x[statCol]);
