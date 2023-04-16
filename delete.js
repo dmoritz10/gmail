@@ -94,6 +94,8 @@ async function deleteGmails(shtTitle) {
   var batchSize = 3
   var pntr = msgIdsArr.length-1
 
+  console.log('pntr', pntr)
+
   while (true) {
 
     var msgArr = []
@@ -101,7 +103,11 @@ async function deleteGmails(shtTitle) {
 
     for (let i = 0;i++; i<batchSize) {
 
+
       pntr -= i
+
+      console.log('i', i, pntr)
+
       if (pntr < 0) break;
 
       console.log('msgIdsArr[i]', msgIdsArr[pntr])
