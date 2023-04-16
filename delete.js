@@ -90,7 +90,7 @@ async function deleteGmails(shtTitle) {
   var msgIdsArr = shtArr.map(x => x[msgIdsCol]);
   var statArr = shtArr.map(x => x[statCol]);
 
-  console.log('msgIdsArr',msgIdsCol,  msgIdsArr)
+  console.log('Arrs', msgIdsCol, msgIdsArr, statCol, statArr)
 
   var batchSize = 2
   var pntr = msgIdsArr.length-1
@@ -130,8 +130,8 @@ async function deleteGmails(shtTitle) {
     if (response.status !=204 ) return
 
     var data =     [
-      { 
-        range: '"' + shtTitle + '"!"' + calcRngA1(strPntr + 2, statCol, msgArr.length, 1),   
+      {
+        range: "'" + shtTitle + "'!" + calcRngA1(strPntr + 2, statCol, msgArr.length, 1),   
         values: [new Array(msgArr.length).fill('Deleted')]
       }
     ]
