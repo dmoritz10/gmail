@@ -87,7 +87,7 @@ async function deleteGmails(shtTitle) {
   var statCol = shtHdrs.indexOf('Status')
   var msgIdsCol = shtHdrs.indexOf('Message Ids')
   
-  var msgIdsArr = shtArr.map(x => x[msgIdsCol]*1);
+  var msgIdsArr = shtArr.map(x => x[msgIdsCol]);
 
   console.log('msgIdsArr',msgIdsCol,  msgIdsArr)
 
