@@ -53,7 +53,7 @@ async function onDeleteClick() {
 
         inputOptions.push({
           text: shtTitle,
-          value: shtId
+          value: {title:shtTitle, id:shtId}
         })
           
       }
@@ -64,12 +64,89 @@ async function onDeleteClick() {
         title: 'Select Sheet with emails to delete',
         inputType: 'select',
         inputOptions:inputOptions,
-        callback: function (result) {
-          console.log(result);
-        }
+        callback: deleteGmails(sht)
       });
 
     }
+
+}
+
+async function deleteGmails(sht) {
+
+  console.log('deleteGmails shtId', sht)
+
+  var objSht = await openShts(
+    [
+      { title: sht.title, type: "all" }
+    ])
+
+  toast("Deleting Gmails from " + sht.title, 5000)
+  var shtHdrs = objSht[sht].colHdrs
+  var shtArr = objSht[sht].values
+  var statCol = shtHdrs.indexOf('Status')
+
+  var statArr = shtArr.map(x => x[statCol]);
+
+  let batchSize = 10
+  let pntr = statArr.length-1
+
+  while (true) {
+
+    let msgIdArr = []
+    let strPntr = pntr
+
+    for (let i = 0;i++; i<batchSize) {
+
+      pntr -= i
+      if (pntr < 0) break;
+      if (statArr[i]) msgIdArr = msgIdArr.concat(JSON.parse(statArr[pntr]))
+
+    }
+
+    if (pntr < 0) break
+
+    let response = await batchDeleteGmail({
+      userId: 'me',
+      request: {
+        "ids": msgIdArr
+      }
+    });
+
+    console.log('responseDelete', response)
+
+    return
+
+    if (response.status !=200 ) return
+
+    return
+
+
+    var data =     [
+      { 
+        range: '"' + sht.title + '"!"' + calcRngA1(strPntr + 2, statCol, msgIdArr.length, 1),   
+        values: nbrArr
+      }
+    ]
+  
+    var resource = {
+      valueInputOption: 'USER_ENTERED',
+      data: data
+    }
+  
+    var response = await batchUpdateSheet(resource)
+      
+  }
+
+
+
+
+
+  }
+
+
+
+
+
 
 }
 
