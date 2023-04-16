@@ -101,7 +101,7 @@ async function deleteGmails(shtTitle) {
     var msgArr = []
     var strPntr = pntr
 
-    for (let i = 0;i++; i>batchSize) {
+    for (let i = 0; i<batchSize;i++) {
 
 
       pntr -= i
