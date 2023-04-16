@@ -106,6 +106,8 @@ async function deleteGmails(shtTitle) {
 
     if (pntr < 0) break
 
+    console.log('msgIdArr', msgIdArr)
+
     var response = await batchDeleteGmail({
       userId: 'me',
       request: {
