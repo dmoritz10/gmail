@@ -65,6 +65,8 @@ async function onDeleteClick() {
         }
       });
 
+    }
+
 }
 
 async function onListClick() {
