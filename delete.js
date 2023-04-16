@@ -85,17 +85,18 @@ async function deleteGmails(shtTitle) {
   var shtHdrs = objSht[shtTitle].colHdrs
   var shtArr = objSht[shtTitle].vals
   var statCol = shtHdrs.indexOf('Status')
+  var msgIdsCol = shtHdrs.indexOf('Message Ids')
+  
+  var msgIdsArr = shtArr.map(x => x[msgIdsCol]);
 
-  var statArr = shtArr.map(x => x[statCol]);
-
-  console.log('statArr',statCol,  statArr)
+  console.log('msgIdsArr',msgIdsCol,  msgIdsArr)
 
   let batchSize = 3
-  let pntr = statArr.length-1
+  let pntr = msgIdsArr.length-1
 
   while (true) {
 
-    let msgIdArr = []
+    let msgArr = []
     let strPntr = pntr
 
     for (let i = 0;i++; i<batchSize) {
@@ -103,21 +104,19 @@ async function deleteGmails(shtTitle) {
       pntr -= i
       if (pntr < 0) break;
 
-      console.log('statArr[i]', statArr[i])
-      if (statArr[i]) {
-        let x = msgIdArr.concat(JSON.parse(statArr[pntr]))
-        msgIdArr = x
-      }
+      console.log('msgIdsArr[i]', msgIdsArr[pntr])
+      if (msgIdsArr[pntr]) msgArr = msgArr.concat(JSON.parse(msgIdsArr[pntr]))
+
     }
 
     if (pntr < 0) break
 
-    console.log('msgIdArr', msgIdArr)
+    console.log('msgArr', msgArr)
 
     var response = await batchDeleteGmail({
       userId: 'me',
       request: {
-        "ids": msgIdArr
+        "ids": msgArr
       }
     });
 
