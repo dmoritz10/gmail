@@ -90,9 +90,7 @@ async function deleteGmails(shtTitle) {
   var msgIdsArr = shtArr.map(x => x[msgIdsCol]);
   var statArr = shtArr.map(x => x[statCol]);
 
-  console.log('Arrs', msgIdsCol, msgIdsArr, statCol, statArr)
-
-  var batchSize = 2
+  var batchSize = 25
   var pntr = msgIdsArr.length-1
 
   console.log('pntr', pntr)
@@ -145,13 +143,7 @@ async function deleteGmails(shtTitle) {
   
     var response = await batchUpdateSheet(resource)
 
-    break;
-      
   }
-
-
-
-
 
 }
 
