@@ -64,7 +64,7 @@ async function onDeleteClick() {
         title: 'Select Sheet with emails to delete',
         inputType: 'select',
         inputOptions:inputOptions,
-        callback: deleteGmails(sht)
+        callback: (sht) => deleteGmails(sht)
       });
 
     }
