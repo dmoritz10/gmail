@@ -28,6 +28,8 @@ async function onDeleteClick() {
 
   var sheets = shts.result.sheets
 
+  console.log('shts', shts, sheets)
+
   console.log('shts', shts)
 
     if (sheets) {
@@ -44,20 +46,20 @@ async function onDeleteClick() {
 
         var sht = sheets[j].properties
 
-        if (sht.gridProperties.columnCount != 6) continue
+        // if (sht.gridProperties.columnCount != 6) continue
 
         let shtTitle = sht.title
-        let shtId = sheetId
+        let shtId = sht.sheetId
 
         inputOptions.push({
           text: shtTitle,
-          value: sht.shtId
+          value: shtId
         })
           
       }
 
       console.log('inputOptions', inputOptions)
-      
+
       bootbox.prompt({
         title: 'Select Sheet with emails to delete',
         inputType: 'select',
