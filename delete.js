@@ -141,14 +141,8 @@ async function deleteGmails(sht) {
 
 
 
-  }
-
-
-
-
-
-
 }
+
 
 async function onListClick() {
 
