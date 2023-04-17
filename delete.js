@@ -111,22 +111,20 @@ async function deleteGmails(shtTitle) {
 
       if (pntr < 0) {
         pntr = 0
-        var strPntr = pntr
         break;
       }
 
       console.log('msgIdsArr[i]', msgIdsArr[pntr])
       if (msgIdsArr[pntr] && statArr[pntr] != 'Deleted') msgArr = msgArr.concat(JSON.parse(msgIdsArr[pntr]))
 
-
     }
 
+    var strPntr = pntr
 
     if (pntr == 0 && msgArr.length == 0) break;
 
     if (msgArr.length == 0) continue
 
-    var strPntr = pntr
 
 
     console.log('msgArr', msgArr)
