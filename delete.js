@@ -199,13 +199,23 @@ async function onListClick() {
       var search = cat + " label:" + listSpec.label + " before:" + beforeDate 
           + (listSpec.attachment = '' ? '' : attachment);
 
-    var createRsp = await createSheet()
+    var shtId = getSheetId(search)
+    if (shtId) await clearSheet(shtId)
+    else      {
+      var resp = await createSheet()
+      var shtId = resp.result.replies[0].addSheet.properties.sheetId
+      var response = await renameSheet(shtId, search)
+    }
 
-    var shtObj = createRsp.result.replies[0].addSheet.properties
+    // var createRsp = await createSheet()
 
-    console.log('shtObj', shtObj)
+    // var shtObj = createRsp.result.replies[0].addSheet.properties
 
-    var clearRsp = await clearSheet(shtObj.sheetId)
+    // console.log('shtObj', shtObj)
+
+    // var clearRsp = await clearSheet(shtObj.sheetId)
+
+    // var response = await renameSheet(shtId, search)
 
     var listThreads = []
     listThreads.push(['Subject', 'Last Message Date', 'Message Count', 'Labels', 'Status', 'Message Ids'])
@@ -236,7 +246,7 @@ async function onListClick() {
           return
         }
                
-        postStatus("Processing - " + search)
+        postStatus("Processing<br>" + search)
         
         for (var i=0; i<threads.length; i++)    {
 
@@ -278,7 +288,7 @@ async function onListClick() {
 
         }
         console.log('listThreads', listThreads)
-        var response = await appendSheetRow(listThreads, shtObj.title)
+        var response = await appendSheetRow(listThreads, search)
 
         listThreads = []
 
@@ -286,13 +296,15 @@ async function onListClick() {
 
     console.log('run time', i, msgCntr,  parseInt((new Date() - startTime) / (1000*60)), parseInt((msgCntr * 1000*60) / (new Date() - startTime)))
 
-    var msg = msgCntr + ' emails listed<br></br>' + 
-              parseInt((new Date() - startTime) / (1000*60)) + ' minutes<br>' + 
-              parseInt((msgCntr * 1000*60) / (new Date() - startTime)) + ' email per minute'
+    var msg = msgCntr + ' emails listed<br>' + 
+              Math.round((new Date() - startTime) / (1000*60)) + ' minutes<br>' + 
+              Math.round((msgCntr * 1000*60) / (new Date() - startTime)) + ' emails per minute'
 
-    postStatus("Complete - " + search, msg)
+    postStatus("Complete<br>" + search, msg)
 
-    var response = renameSheet(shtObj.sheetId, search)
+    // var response = renameSheet(shtObj.sheetId, search)
+
+
 
     modal(false)
 
