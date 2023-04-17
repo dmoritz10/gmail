@@ -82,7 +82,7 @@ async function deleteGmails(shtTitle) {
   var msgIdsArr = shtArr.map(x => x[msgIdsCol]);
   var statArr = shtArr.map(x => x[statCol]);
 
-  var nbrDeletes = Answers.filter(x => x !== "Deleted").length;
+  var nbrDeletes = statArr.filter(x => x !== "Deleted").length;
 
   var msg = "Ok to delete " + nbrDeletes + " from " + shtTitle + " ?"
   var response = await prompt(msg, "text");
