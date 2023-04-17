@@ -73,9 +73,8 @@ async function deleteGmails(shtTitle) {
       { title: shtTitle, type: "all" }
     ])
 
-    console.log('objSht', objSht)
-
   toast("Deleting Gmails from " + shtTitle, 5000)
+
   var shtHdrs = objSht[shtTitle].colHdrs
   var shtArr = objSht[shtTitle].vals
   var statCol = shtHdrs.indexOf('Status')
@@ -86,6 +85,7 @@ async function deleteGmails(shtTitle) {
 
   var batchSize = 50
   var pntr = msgIdsArr.length
+  var delCntr = 0
 
   while (true) {
 
@@ -119,6 +119,8 @@ async function deleteGmails(shtTitle) {
 
     if (response.status !=204 ) return
 
+    delCntr += msgArr.length
+
     var data =     [
       {
         range: "'" + shtTitle + "'!" + calcRngA1(pntr + 2, statCol + 1, cntr, 1),   
@@ -134,6 +136,9 @@ async function deleteGmails(shtTitle) {
     var response = await batchUpdateSheet(resource)
 
   }
+
+  toast("Deleting Gmails from " + shtTitle + " complete./n" + delcntr + "emails deleted.", 5000)
+
 
 }
 
