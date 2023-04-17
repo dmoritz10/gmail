@@ -88,7 +88,9 @@ async function deleteGmails(shtTitle) {
   var response = await confirm(msg);
   if (!response) return
 
-  toast("Deleting Gmails from " + shtTitle, 5000)
+  toast("Deleting Gmails from<<br><br>" + shtTitle, 5000)
+
+  modal(true)
 
 
   var batchSize = 50
@@ -145,8 +147,9 @@ async function deleteGmails(shtTitle) {
 
   }
 
-  toast("Deleting Gmails from " + shtTitle + " complete./n" + delCntr + "emails deleted.", 5000)
-
+  toast("Deleting Gmails from <br><br>" + shtTitle + " is complete.<br><br" + delCntr + "emails deleted.", 5000)
+  
+  modal(false)
 
 }
 
@@ -212,6 +215,8 @@ async function onListClick() {
     var startTime = new Date()
     var msgCntr = 0
 
+    modal(true)
+
     do {
         var responseList = await listGmailThreads({
             userId: 'me',
@@ -225,7 +230,10 @@ async function onListClick() {
 
         var threads = responseList.result.threads
 
-        if (threads.length == 0) {return 'No Gmails match the criteria given: ' + formatlistSpec(listSpec)}
+        if (!threads || threads.length == 0) {
+          await confirm( 'No Gmails match the criteria given: ' + formatlistSpec(listSpec))
+          modal(false)
+        }
                 
         for (var i=0; i<threads.length; i++)    {
 
@@ -274,5 +282,7 @@ async function onListClick() {
     console.log('run time', i, msgCntr,  parseInt((new Date() - startTime) / (1000*60)), parseInt((msgCntr * 1000*60) / (new Date() - startTime)))
 
     var response = renameSheet(shtObj.sheetId, search)
+
+    modal(false)
 
 }
