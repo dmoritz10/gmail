@@ -299,13 +299,13 @@ async function onListClick() {
 }
 
 function postStatus(status, text, textColor = '') {
-  if (status) $("#dgStatus").val(status).addClass(textColor)
-  if (text)   $("#dgText").val(text)
+  if (status) $("#dgStatus").html(status).addClass(textColor)
+  if (text)   $("#dgText").html(text)
 
 }
 
 function clearStatus() {
-  $("#dgStatus").val('').removeClass("bg-danger")
-  $("#dgText").val('')
+  $("#dgStatus").html('').removeClass((index, className) (className.match (/\bg-\S+/g) || []).join(' '))
+  $("#dgText").html('')
   
 }
