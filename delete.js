@@ -199,23 +199,17 @@ async function onListClick() {
       var search = (cat + " label:" + listSpec.label + " before:" + beforeDate 
           + (listSpec.attachment = '' ? '' : attachment)).trimStart();
 
-    var shtId = getSheetId(search)
-    if (shtId) await clearSheet(shtId)
-    else      {
-      var resp = await createSheet()
-      var shtId = resp.result.replies[0].addSheet.properties.sheetId
-      var response = await renameSheet(shtId, search)
-    }
+    let testShtId = getSheetId(search)
+    if (testShtId) await deleteSheet(testShtId)
 
-    // var createRsp = await createSheet()
 
-    // var shtObj = createRsp.result.replies[0].addSheet.properties
+    var createRsp = await createSheet()
 
-    // console.log('shtObj', shtObj)
+    var shtId = createRsp.result.replies[0].addSheet.properties.sheetId
 
-    // var clearRsp = await clearSheet(shtObj.sheetId)
+    console.log('shtId', shtId)
 
-    // var response = await renameSheet(shtId, search)
+    var clearRsp = await clearSheet(shtId)
 
     var listThreads = []
     listThreads.push(['Subject', 'Last Message Date', 'Message Count', 'Labels', 'Status', 'Message Ids'])
@@ -302,7 +296,7 @@ async function onListClick() {
 
     postStatus("Complete<br>" + search, msg)
 
-    // var response = renameSheet(shtObj.sheetId, search)
+    var response = renameSheet(shtId, search)
 
 
 
