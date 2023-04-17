@@ -239,7 +239,7 @@ async function onListClick() {
 
             let msgs = responseGet.result.messages
 
-            // console.log('msgs', msgs)
+            console.log('responseGet', responseGet)
 
             let mostRecentMsg = new Date(msgs[msgs.length-1].internalDate*1)
 
