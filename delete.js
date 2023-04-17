@@ -28,43 +28,39 @@ async function onDeleteClick() {
 
   var sheets = shts.result.sheets
 
-  console.log('shts', shts, sheets)
+  if (sheets) {
 
-  console.log('shts', shts)
+    var nbrSheets = 0
+    let inputOptions = []
+    inputOptions.push({
+      text: 'Choose sheet ...',
+      value: ''
+    })
 
-    if (sheets) {
+  
+    for (var j = 0; j < sheets.length; j++) {
 
-      var nbrSheets = 0
-      let inputOptions = []
+      var sht = sheets[j].properties
+
+      // if (sht.gridProperties.columnCount != 6) continue
+
+      let shtTitle = sht.title
+
       inputOptions.push({
-        text: 'Choose sheet ...',
-        value: ''
+        text: shtTitle,
+        value: shtTitle
       })
-
-    
-      for (var j = 0; j < sheets.length; j++) {
-
-        var sht = sheets[j].properties
-
-        // if (sht.gridProperties.columnCount != 6) continue
-
-        let shtTitle = sht.title
-
-        inputOptions.push({
-          text: shtTitle,
-          value: shtTitle
-        })
-          
-      }
-
-      bootbox.prompt({
-        title: 'Select Sheet with emails to delete',
-        inputType: 'select',
-        inputOptions:inputOptions,
-        callback: (sht) => deleteGmails(sht)
-      });
-
+        
     }
+
+    bootbox.prompt({
+      title: 'Select Sheet with emails to delete',
+      inputType: 'select',
+      inputOptions:inputOptions,
+      callback: (sht) => deleteGmails(sht)
+    });
+
+  }
 
 }
 
@@ -91,8 +87,6 @@ async function deleteGmails(shtTitle) {
   var batchSize = 25
   var pntr = msgIdsArr.length
 
-  console.log('pntr', pntr)
-
   while (true) {
 
     var msgArr = []
@@ -112,7 +106,7 @@ async function deleteGmails(shtTitle) {
 
     }
 
-    var strPntr = pntr
+    // var strPntr = pntr
 
     if (pntr == 0 && msgArr.length == 0) break;
 
@@ -129,7 +123,7 @@ async function deleteGmails(shtTitle) {
 
     var data =     [
       {
-        range: "'" + shtTitle + "'!" + calcRngA1(strPntr + 2, statCol + 1, cntr, 1),   
+        range: "'" + shtTitle + "'!" + calcRngA1(pntr + 2, statCol + 1, cntr, 1),   
         values: new Array(cntr).fill(['Deleted'])
       }
     ]
