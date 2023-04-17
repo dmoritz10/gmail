@@ -18,35 +18,20 @@
     <div class=clearfix></div>
   
     <div class="row m-1 p-3 border-top border-bottom  bg-white">
-      <div class="col px-1">
-        <div id="hpCurrHandicap" class="text-success text-center h2 hpElem"></div>
-        <div class="label text-center">Handicap</div>
-      </div>
-      <div class="col px-1">
-        <div id="hpNbrRounds" class="text-success text-center h2 hpElem"></div>
-        <div class="label text-center">Rounds</div>
-      </div>
     </div>
   
     <div class=clearfix></div>
   
   
-    <div id="gdDispSelectCourse" class="row m-1 mt-3 p-0 pt-3">
-      <div class="col-5 px-1" >
-        <div class="label text-center">Select a Category:</div>
+    <div class="row m-1 mt-3 p-0 pt-3">
+      <div class="col px-1" >
+        <div class="label text-right">Select a Category:</div>
         <select id="gmail-category-select" class="custom-select text-success text-center h5 hpElem">
             <option value="">All</option>
-            <!-- <option value="Inbox">Inbox</option>
-            <option value="Sent">Sent</option>
-            <option value="Primary">Primary</option>
-            <option value="Social">Social</option>
-            <option value="Promotions">Promotions</option>
-            <option value="Updates">Updates</option>
-            <option value="Forums">Forums</option>
-            <option value="Trash">Trash</option>
-            <option value="Spam">Spam</option> -->
         </select>
       </div>
+    </div>
+    <div class="row m-1 mt-3 p-0 pt-3">
       <div class="col px-1">
         <div class="label text-center">Select a Label:</div>
         <select id="gmail-label-select" class="custom-select text-success text-center  h5  hpElem">
@@ -54,6 +39,8 @@
             <option value="all">all</option>
         </select>
       </div>
+    </div>
+    <div class="row m-1 mt-3 p-0 pt-3">
       <div class="col px-1">
         <div class="label text-center">Has attachment:</div>
         <select id="gmail-has-attachment-select" class="custom-select text-success text-center  h5  hpElem">
@@ -67,26 +54,29 @@
             <option value="25MB">>25Mb</option>
         </select>
       </div>
+    </div>
+    <div class="row m-1 mt-3 p-0 pt-3">
       <div class="col px-1">
         <label for="gmail-date-select">
                 Before Date:
         </label>
         <input type="date" id="gmail-date-select" name="date" style="float:right;"/>  
       </div>
+    </div>
         
-      <div class=clearfix></div>
+    <div class=clearfix></div>
   
  
-    <div id="hpDispStartBtn" class="row fixed-bottom pb-3">
+    <div class="row fixed-bottom pb-3">
       <div class="col text-center">
         <div class="btn-group" role="group">
-            <button id="sidebar-delete-button">Delete</button>
-            <button id="sidebar-list-button">List</button>
-            <button id="sidebar-exit-button">Close</button>
-        </div>
+            <button id="sidebar-list-button" type="button" class="btn btn-primary" data-dismiss="modal">List</button>
+            <button id="sidebar-delete-button" type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
+            <button id="sidebar-exit-button" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
       </div>
     </div>
-  
+
     <div class="clearfix"></div>
   
   </div>

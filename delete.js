@@ -73,7 +73,6 @@ async function deleteGmails(shtTitle) {
       { title: shtTitle, type: "all" }
     ])
 
-  toast("Deleting Gmails from " + shtTitle, 5000)
 
   var shtHdrs = objSht[shtTitle].colHdrs
   var shtArr = objSht[shtTitle].vals
@@ -82,6 +81,15 @@ async function deleteGmails(shtTitle) {
   
   var msgIdsArr = shtArr.map(x => x[msgIdsCol]);
   var statArr = shtArr.map(x => x[statCol]);
+
+  var nbrDeletes = Answers.filter(x => x !== "Deleted").length;
+
+  var msg = "Ok to delete " + nbrDeletes + " from " + shtTitle + " ?"
+  var response = await prompt(msg, "text");
+  if (!response) return
+
+  toast("Deleting Gmails from " + shtTitle, 5000)
+
 
   var batchSize = 50
   var pntr = msgIdsArr.length
@@ -137,7 +145,7 @@ async function deleteGmails(shtTitle) {
 
   }
 
-  toast("Deleting Gmails from " + shtTitle + " complete./n" + delcntr + "emails deleted.", 5000)
+  toast("Deleting Gmails from " + shtTitle + " complete./n" + delCntr + "emails deleted.", 5000)
 
 
 }
