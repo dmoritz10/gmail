@@ -200,6 +200,8 @@ async function onListClick() {
           + (listSpec.attachment = '' ? '' : attachment)).trimStart();
 
     let testShtId = getSheetId(search)
+
+    console.log('testShtId', testShtId)
     if (testShtId) await deleteSheet(testShtId)
 
 
