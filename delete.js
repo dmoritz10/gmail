@@ -57,8 +57,6 @@ async function onDeleteClick() {
           
       }
 
-      console.log('inputOptions', inputOptions)
-
       bootbox.prompt({
         title: 'Select Sheet with emails to delete',
         inputType: 'select',
@@ -110,7 +108,6 @@ async function deleteGmails(shtTitle) {
         break;
       }
 
-      console.log('msgIdsArr[i]', msgIdsArr[pntr])
       if (msgIdsArr[pntr] && statArr[pntr] != 'Deleted') msgArr = msgArr.concat(JSON.parse(msgIdsArr[pntr]))
 
     }
@@ -121,8 +118,6 @@ async function deleteGmails(shtTitle) {
 
     if (msgArr.length == 0) continue
 
-    console.log('msgArr', msgArr, pntr, cntr)
-
     var response = await batchDeleteGmail({
       userId: 'me',
       resource: {
@@ -131,8 +126,6 @@ async function deleteGmails(shtTitle) {
     });
 
     if (response.status !=204 ) return
-
-    console.log('values', new Array(msgArr.length).fill(['Deleted']))
 
     var data =     [
       {
