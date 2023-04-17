@@ -231,7 +231,7 @@ async function onListClick() {
         var threads = responseList.result.threads
 
         if (!threads || threads.length == 0) {
-          await confirm( 'No Gmails match the criteria given: ' + formatlistSpec(listSpec))
+          await confirm( 'No Gmails match the criteria given: <br><br>' + search)
           modal(false)
         }
                 
