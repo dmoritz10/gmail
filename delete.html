@@ -23,7 +23,7 @@
     <div class=clearfix></div>
   
   
-    <div class="row m-1 mt-3 p-0 pt-3">
+    <div class="row m-1 p-0 pt-3">
       <div class="col px-1" >
         <div class="label text-right">Select a Category:</div>
         <select id="gmail-category-select" class="custom-select text-success text-center h5 hpElem">
@@ -31,7 +31,7 @@
         </select>
       </div>
     </div>
-    <div class="row m-1 mt-3 p-0 pt-3">
+    <div class="row m-1 p-0 pt-3">
       <div class="col px-1">
         <div class="label text-center">Select a Label:</div>
         <select id="gmail-label-select" class="custom-select text-success text-center  h5  hpElem">
@@ -40,7 +40,7 @@
         </select>
       </div>
     </div>
-    <div class="row m-1 mt-3 p-0 pt-3">
+    <div class="row m-1 p-0 pt-3">
       <div class="col px-1">
         <div class="label text-center">Has attachment:</div>
         <select id="gmail-has-attachment-select" class="custom-select text-success text-center  h5  hpElem">
@@ -55,12 +55,10 @@
         </select>
       </div>
     </div>
-    <div class="row m-1 mt-3 p-0 pt-3">
-      <div class="col px-1">
-        <label for="gmail-date-select">
-                Before Date:
-        </label>
-        <input type="date" id="gmail-date-select" name="date" style="float:right;"/>  
+    <div class="row m-1 p-0 pt-3">
+      <div class="col px-1 text-end">
+        <label for="gmail-date-select">Before Date:</label>
+        <input type="date" id="gmail-date-select" name="date" />  
       </div>
     </div>
         
@@ -70,9 +68,9 @@
     <div class="row fixed-bottom pb-3">
       <div class="col text-center">
         <div class="btn-group" role="group">
-            <button id="sidebar-list-button" type="button" class="btn btn-primary" data-dismiss="modal">List</button>
-            <button id="sidebar-delete-button" type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
-            <button id="sidebar-exit-button" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button id="sidebar-list-button" type="button" class="btn btn-primary mx-1" >List</button>
+            <button id="sidebar-delete-button" type="button" class="btn btn-primary mx-1" data-dismiss="modal">Delete</button>
+            <button id="sidebar-exit-button" type="button" class="btn btn-secondary mx-1" data-dismiss="modal" onclick="window.close()">Close</button>
           </div>
       </div>
     </div>
