@@ -85,7 +85,7 @@ async function deleteGmails(shtTitle) {
   var nbrDeletes = statArr.filter(x => x !== "Deleted").length;
 
   var msg = "Ok to delete " + nbrDeletes + " from " + shtTitle + " ?"
-  var response = await prompt(msg, "text");
+  var response = await confirm(msg);
   if (!response) return
 
   toast("Deleting Gmails from " + shtTitle, 5000)
