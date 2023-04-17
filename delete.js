@@ -196,8 +196,8 @@ async function onListClick() {
           break;
       }
         
-      var search = trimStart(cat + " label:" + listSpec.label + " before:" + beforeDate 
-          + (listSpec.attachment = '' ? '' : attachment));
+      var search = (cat + " label:" + listSpec.label + " before:" + beforeDate 
+          + (listSpec.attachment = '' ? '' : attachment)).trimStart();
 
     var shtId = getSheetId(search)
     if (shtId) await clearSheet(shtId)
