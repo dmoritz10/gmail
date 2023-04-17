@@ -84,7 +84,7 @@ async function deleteGmails(shtTitle) {
   var msgIdsArr = shtArr.map(x => x[msgIdsCol]);
   var statArr = shtArr.map(x => x[statCol]);
 
-  var batchSize = 25
+  var batchSize = 50
   var pntr = msgIdsArr.length
 
   while (true) {
@@ -105,8 +105,6 @@ async function deleteGmails(shtTitle) {
       if (msgIdsArr[pntr] && statArr[pntr] != 'Deleted') msgArr = msgArr.concat(JSON.parse(msgIdsArr[pntr]))
 
     }
-
-    // var strPntr = pntr
 
     if (pntr == 0 && msgArr.length == 0) break;
 
