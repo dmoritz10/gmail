@@ -105,10 +105,6 @@ async function deleteGmails(shtTitle) {
       cntr++
       pntr--
 
-      console.log('i', i, pntr)
-
-      var strPntr = pntr
-
       if (pntr < 0) {
         pntr = 0
         break;
