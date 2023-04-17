@@ -115,7 +115,9 @@ async function deleteGmails(shtTitle) {
 
     }
 
-    if (pntr == 0 && msgArr.length == 0) break
+    if (msgArr.length == 0) continue
+
+    if (pntr == 0) break
 
     console.log('msgArr', msgArr)
 
