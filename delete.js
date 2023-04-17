@@ -231,10 +231,13 @@ async function onListClick() {
         var threads = responseList.result.threads
 
         if (!threads || threads.length == 0) {
-          await confirm( 'No Gmails match the criteria given: <br><br>' + search)
+          postStatus("Error", 'No Gmails match the criteria given: <br><br>' + search, 'bg-danger')
           modal(false)
+          return
         }
-                
+               
+        postStatus("Processing - " + search)
+        
         for (var i=0; i<threads.length; i++)    {
 
             let thread = threads[i]
@@ -244,6 +247,8 @@ async function onListClick() {
                 id: thread.id,
                 format: 'full'
             });
+
+            postStatus(null, msgCntr)
 
             let msgs = responseGet.result.messages
 
@@ -281,8 +286,26 @@ async function onListClick() {
 
     console.log('run time', i, msgCntr,  parseInt((new Date() - startTime) / (1000*60)), parseInt((msgCntr * 1000*60) / (new Date() - startTime)))
 
+    var msg = msgCntr + ' emails listed<br></br>' + 
+              parseInt((new Date() - startTime) / (1000*60)) + ' minutes<br>' + 
+              parseInt((msgCntr * 1000*60) / (new Date() - startTime)) + ' email per minute'
+
+    postStatus("Complete - " + search, msg)
+
     var response = renameSheet(shtObj.sheetId, search)
 
     modal(false)
 
+}
+
+function postStatus(status, text, textColor = '') {
+  if (status) $("#dgStatus").val(status).addClass(textColor)
+  if (text)   $("#dgText").val(text)
+
+}
+
+function clearStatus() {
+  $("#dgStatus").val('').removeClass("bg-danger")
+  $("#dgText").val('')
+  
 }
