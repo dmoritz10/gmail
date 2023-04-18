@@ -200,19 +200,12 @@ async function onListClick() {
           + (listSpec.attachment = '' ? '' : attachment)).trimStart();
 
     let testShtId = await getSheetId(search)
-
-    console.log('testShtId', testShtId)
     if (testShtId) await deleteSheet(testShtId)
-
 
     var createRsp = await createSheet()
 
     var shtId = createRsp.result.replies[0].addSheet.properties.sheetId
     var shtTitle = createRsp.result.replies[0].addSheet.properties.title
-
-    console.log('createRsp', createRsp)
-
-    console.log('shtId', shtId)
 
     var clearRsp = await clearSheet(shtId)
 
@@ -286,7 +279,6 @@ async function onListClick() {
             console.log('progress', i, msgIds.length, msgCntr,  parseInt(msgCntr * 1000*60 / (new Date() - startTime)))
 
         }
-        console.log('listThreads', listThreads)
         var response = await appendSheetRow(listThreads, shtTitle)
 
         listThreads = []
