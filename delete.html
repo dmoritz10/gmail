@@ -20,47 +20,66 @@
     <div class="row m-2 p-0 border-top border-bottom  bg-white"></div>
   
     <div class=clearfix></div>
+
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-select" type="button" role="tab" aria-controls="nav-select" aria-selected="true">Select</button>
+        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-delete" type="button" role="tab" aria-controls="nav-delete" aria-selected="false">Delete</button>
+      </div>
+    </nav>
   
-  
-    <div class="row m-1 p-0 pt-3">
-      <div class="col-8 px-1" >
-        <div class="label h5">Select a Category:</div>
-        <select id="gmail-category-select" class="text-success h5 w-100">
-            <option value="">All</option>
-        </select>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-select" role="tabpanel" aria-labelledby="nav-select-tab">
+        <div class="row m-1 p-0 pt-3">
+          <div class="col-8 px-1" >
+            <div class="label h5">Select a Category:</div>
+            <select id="gmail-category-select" class="text-success h5 w-100">
+                <option value="">All</option>
+            </select>
+          </div>
+        </div>
+        <div class="row m-1 p-0 pt-3">
+          <div class="col-8 px-1">
+            <div class="label h5">Select a Label:</div>
+            <select id="gmail-label-select" class="text-success h5 w-100">
+                <option value="">none</option>
+                <option value="all">all</option>
+            </select>
+          </div>
+        </div>
+        <div class="row m-1 p-0 pt-3">
+          <div class="col-8 px-1 text-start">
+            <!-- <div class="label text-center">Has attachment:</div> -->
+            <label class="h5" for="gmail-has-attachment-select">Has attachment:</label>
+            <select id="gmail-has-attachment-select" class="text-success h5" style="float:right">
+                <option value=""></option>
+                <option value="all">all attachments</option>
+                <option value="none">no attachments</option>
+                <option value="1MB">>1Mb</option>
+                <option value="2MB">>2Mb</option>
+                <option value="5MB">>5Mb</option>
+                <option value="10MB">>10Mb</option>
+                <option value="25MB">>25Mb</option>
+            </select>
+          </div>
+        </div>
+        <div class="row m-1 p-0 pt-3">
+          <div class="col-8 px-1 text-start">
+            <label class="h5" for="gmail-date-select"  class=" h5">Before Date:</label>
+            <input type="date" id="gmail-date-select"  class="text-center text-success h5" style="float:right"/>  
+          </div>
+        </div>
+
+      </div>
+
+      <div class="tab-pane fade" id="nav-delete" role="tabpanel" aria-labelledby="nav-delete-tab">
+
+
+
       </div>
     </div>
-    <div class="row m-1 p-0 pt-3">
-      <div class="col-8 px-1">
-        <div class="label h5">Select a Label:</div>
-        <select id="gmail-label-select" class="text-success h5 w-100">
-            <option value="">none</option>
-            <option value="all">all</option>
-        </select>
-      </div>
-    </div>
-    <div class="row m-1 p-0 pt-3">
-      <div class="col-8 px-1 text-start">
-        <!-- <div class="label text-center">Has attachment:</div> -->
-        <label class="h5" for="gmail-has-attachment-select">Has attachment:</label>
-        <select id="gmail-has-attachment-select" class="text-success h5" style="float:right">
-            <option value=""></option>
-            <option value="all">all attachments</option>
-            <option value="none">no attachments</option>
-            <option value="1MB">>1Mb</option>
-            <option value="2MB">>2Mb</option>
-            <option value="5MB">>5Mb</option>
-            <option value="10MB">>10Mb</option>
-            <option value="25MB">>25Mb</option>
-        </select>
-      </div>
-    </div>
-    <div class="row m-1 p-0 pt-3">
-      <div class="col-8 px-1 text-start">
-        <label class="h5" for="gmail-date-select"  class=" h5">Before Date:</label>
-        <input type="date" id="gmail-date-select"  class="text-center text-success h5" style="float:right"/>  
-      </div>
-    </div>
+
+
         
     <div class=clearfix></div>
 
@@ -68,11 +87,7 @@
       <div id="dgStatus" class="col h5 d-none p-2"></div>
       <div id="dgText"   class="col h5 d-none p-2"></div>
     </div>
-<!--   
-  sad
-  fasd
-  
-  -->
+
     <div class="row fixed-bottom pb-3">
       <div class="col text-center">
         <div class="btn-group" role="group">
