@@ -208,6 +208,9 @@ async function onListClick() {
     var createRsp = await createSheet()
 
     var shtId = createRsp.result.replies[0].addSheet.properties.sheetId
+    var shtTitle = createRsp.result.replies[0].addSheet.properties.title
+
+    console.log('createRsp', createRsp)
 
     console.log('shtId', shtId)
 
@@ -284,7 +287,7 @@ async function onListClick() {
 
         }
         console.log('listThreads', listThreads)
-        var response = await appendSheetRow(listThreads, search)
+        var response = await appendSheetRow(listThreads, shtTitle)
 
         listThreads = []
 
