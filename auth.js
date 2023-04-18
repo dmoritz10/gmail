@@ -43,7 +43,6 @@ function revokeEvent() {
 
 function proceedAsSignedIn() {
 
-  alert('proceedaslogedin')
   document.getElementById('signin').style.display = 'none';
   runApp();
 }
@@ -93,8 +92,6 @@ async function runApp() {
   }
   await initialUI();
 
-  alert('hi dan')
-
   gotoTab('Home')
     
 }
@@ -112,16 +109,5 @@ async function initialUI() {
 
   arrOptions    = toObject(arrShts.Settings.vals)
   optionsIdx    = toObjectIdx(arrShts.Settings.vals)
-
-  // disable add/change/delete for Trips and Trip Detail
-
-  if (user['email'] != 'dmoritz10@gmail.com') {
-
-    $('#btnTrpEdit').addClass('d-none')
-    $('#btnTrpAddTrip').addClass('d-none')
-    $('#btnTrpAddNew').addClass('d-none')
-    $('#btnImportPlaces').addClass('d-none')
-    
-  }
 
 };
