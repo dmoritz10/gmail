@@ -42,6 +42,8 @@ function revokeEvent() {
 }
 
 function proceedAsSignedIn() {
+
+  alert('proceedaslogedin')
   document.getElementById('signin').style.display = 'none';
   runApp();
 }
