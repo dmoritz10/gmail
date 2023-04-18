@@ -86,7 +86,7 @@ async function deleteGmails(shtTitle) {
 
   var nbrDeletes = statArr.filter(x => x !== "Deleted").length;
 
-  var msg = "Ok to delete " + nbrDeletes + " from " + shtTitle + " ?"
+  var msg = "Ok to delete " + nbrDeletes + " emails from " + shtTitle + " ?"
   var response = await confirm(msg);
   if (!response) return
 
@@ -315,7 +315,7 @@ function postStatus(status, text, textColor = '') {
 
 function clearStatus() {
   $("#dgStatus").html('').addClass('d-none')
-  // $("#dgStatus").removeClass((index, className) (className.match (/\bg-\S+/g) || []).join(' '))
+  $("#dgStatus").removeClass((index, className) => (className.match (/\bg-\S+/g) || []).join(' '))
   $("#dgText").html('').addClass('d-none')
   
 }
