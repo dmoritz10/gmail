@@ -24,6 +24,8 @@ async function loadDropDowns() {
 
 async function onDeleteClick() {
 
+  clearStatus()
+
   var shts = await getSheets()
 
   var sheets = shts.result.sheets
@@ -88,7 +90,7 @@ async function deleteGmails(shtTitle) {
   var response = await confirm(msg);
   if (!response) return
 
-  toast("Deleting Gmails from<<br><br>" + shtTitle, 5000)
+  postStatus("Deleting Gmails "+ nbrDeletes + " from " + shtTitle)
 
   modal(true)
 
@@ -131,6 +133,8 @@ async function deleteGmails(shtTitle) {
 
     delCntr += msgArr.length
 
+    postStatus(null, delCntr + " emails deleted.")
+
     var data =     [
       {
         range: "'" + shtTitle + "'!" + calcRngA1(pntr + 2, statCol + 1, cntr, 1),   
@@ -147,7 +151,7 @@ async function deleteGmails(shtTitle) {
 
   }
 
-  toast("Deleting Gmails from <br><br>" + shtTitle + " is complete.<br><br" + delCntr + "emails deleted.", 5000)
+  postStatus("Complete<br>", delCntr + " emails deleted.")
   
   modal(false)
 
@@ -155,6 +159,8 @@ async function deleteGmails(shtTitle) {
 
 
 async function onListClick() {
+
+    clearStatus()
 
     var category_selected = $('#gmail-category-select').val();
     var label_selected = $('#gmail-label-select').val();
@@ -238,7 +244,7 @@ async function onListClick() {
           return
         }
                
-        postStatus("Processing<br>" + search)
+        postStatus("Listing Gmails<br>" + search)
         
         for (var i=0; i<threads.length; i++)    {
 
@@ -302,13 +308,13 @@ async function onListClick() {
 }
 
 function postStatus(status, text, textColor = '') {
-  if (status) $("#dgStatus").html(status).addClass(textColor)
-  if (text)   $("#dgText").html(text)
+  if (status) $("#dgStatus").html(status).addClass(textColor).removeClass('d-none')
+  if (text)   $("#dgText").html(text).removeClass('d-none')
 
 }
 
 function clearStatus() {
-  $("#dgStatus").html('').removeClass((index, className) (className.match (/\bg-\S+/g) || []).join(' '))
-  $("#dgText").html('')
+  $("#dgStatus").html('').removeClass((index, className) (className.match (/\bg-\S+/g) || []).join(' ')).addClass('d-none')
+  $("#dgText").html('').addClass('d-none')
   
 }
