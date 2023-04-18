@@ -199,7 +199,7 @@ async function onListClick() {
       var search = (cat + " label:" + listSpec.label + " before:" + beforeDate 
           + (listSpec.attachment = '' ? '' : attachment)).trimStart();
 
-    let testShtId = getSheetId(search)
+    let testShtId = await getSheetId(search)
 
     console.log('testShtId', testShtId)
     if (testShtId) await deleteSheet(testShtId)
