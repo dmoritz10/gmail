@@ -315,7 +315,7 @@ function postStatus(status, text, textColor = '') {
 
 function clearStatus() {
   $("#dgStatus").html('').addClass('d-none')
-  $("#dgStatus").removeClass((index, className) (className.match (/\bg-\S+/g) || []).join(' '))
+  // $("#dgStatus").removeClass((index, className) (className.match (/\bg-\S+/g) || []).join(' '))
   $("#dgText").html('').addClass('d-none')
   
 }
