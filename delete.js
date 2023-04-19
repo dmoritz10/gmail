@@ -3,7 +3,7 @@ function btnGmailDeleteHtml() {
 
     loadDropDowns()
 
-    gotoTab('select')
+    gotoTab('nav-select')
     gotoTab('GmailDelete')
 
 }
