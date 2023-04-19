@@ -4,7 +4,7 @@ function btnGmailDeleteHtml() {
     loadDropDowns()
 
     $('#gd-nav-delete-tab').trigger('click');     // the only way I can get the Select tab to active show
-    $('#gd-nav-select-tab').trigger('click');
+    // $('#gd-nav-select-tab').trigger('click');
 
     gotoTab('GmailDelete')
 
@@ -314,14 +314,14 @@ function postStatus(idPreFix, status, text, textColor = 'text-black') {
 
   console.log('postStatus',"#" + idPreFix + "-status" )
   console.log($("#" + idPreFix + "-status"))
-  
-  if (status) $("#" + idPreFix + "-status").html(status).addClass(textColor).removeClass('d-none')
-  if (text)   $("#" + idPreFix + "-text").html(text).removeClass('d-none')
+
+  if (status) $("#'" + idPreFix + "-status'").html(status).addClass(textColor).removeClass('d-none')
+  if (text)   $("#'" + idPreFix + "-text'").html(text).removeClass('d-none')
 
 }
 
 function clearStatus(idPreFix) {
-  $("#" + idPreFix + "-status").html('').addClass('d-none')
-  $("#" + idPreFix + "-text").html('').addClass('d-none')
+  $("#'" + idPreFix + "-status'").html('').addClass('d-none')
+  $("#'" + idPreFix + "-text'").html('').addClass('d-none')
   
 }
