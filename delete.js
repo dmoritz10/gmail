@@ -5,13 +5,13 @@ function btnGmailDeleteHtml() {
 
     // $('#nav-select').trigger('click');
     gotoTab('GmailDelete')
-    // $('#nav-delete').trigger('click');
+    $('#nav-delete-tab').trigger('click');
 
     // var someTabTriggerEl = document.querySelector('#nav-delete')
     // var tab = new bootstrap.Tab(someTabTriggerEl)
     // tab.show()
-    var triggerEl = document.getElementById('nav-delete-tab')
-    bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
+    // var triggerEl = document.getElementById('nav-delete-tab')
+    // bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
 
 }
 
