@@ -321,14 +321,13 @@ function postStatus(idPreFix, status, text, textColor = 'text-black') {
 }
 
 function clearStatus(idPreFix) {
-  var x = "'#gds" + "-status'"
+  var x = "#gds" + "-status"
   console.log( $('#btnGmailDelete') )
   console.log( $('#btn' + 'GmailDelete') )
   console.log($(x))
-  console.log($('"#gds" + "-status"'))
 
-  $("'#gds" + "-status'").html('').addClass('d-none')
-  $("'#" + idPreFix + "-status'").html('').addClass('d-none')
-  $("'#" + idPreFix + "-text'").html('').addClass('d-none')
+  $("#gds" + "-status").html('').addClass('d-none')
+  $("#" + idPreFix + "-status").html('').addClass('d-none')
+  $("#" + idPreFix + "-text").html('').addClass('d-none')
   
 }
