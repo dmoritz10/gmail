@@ -10,7 +10,8 @@ function btnGmailDeleteHtml() {
     // var someTabTriggerEl = document.querySelector('#nav-delete')
     // var tab = new bootstrap.Tab(someTabTriggerEl)
     // tab.show()
-
+    var triggerEl = document.querySelector('#nav-tab a[href="#nav-select"]')
+    bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
 
 }
 
@@ -251,7 +252,7 @@ async function onListClick() {
           return
         }
                
-        postStatus("Listing Gmails<br>" + search)
+        postStatus("Selecting Gmails<br>" + search)
         
         for (var i=0; i<threads.length; i++)    {
 
