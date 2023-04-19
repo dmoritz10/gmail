@@ -3,17 +3,10 @@ function btnGmailDeleteHtml() {
 
     loadDropDowns()
 
-    // $('#nav-select').trigger('click');
-    gotoTab('GmailDelete')
-    // $('#nav-delete-tab').trigger('click');
-    $('#nav-delete-tab').trigger('click');
-    $('#nav-select-tab').trigger('click');
+    $('#gd-nav-delete-tab').trigger('click');     // the only way I can get the Select tab to active show
+    $('#gd-nav-select-tab').trigger('click');
 
-    // var someTabTriggerEl = document.querySelector('#nav-delete')
-    // var tab = new bootstrap.Tab(someTabTriggerEl)
-    // tab.show()
-    // var triggerEl = document.getElementById('nav-delete-tab')
-    // bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
+    gotoTab('GmailDelete')
 
 }
 
@@ -34,7 +27,7 @@ async function loadDropDowns() {
 
 async function onDeleteClick() {
 
-  clearStatus()
+  clearStatus("gds")
 
   var shts = await getSheets()
 
@@ -100,7 +93,7 @@ async function deleteGmails(shtTitle) {
   var response = await confirm(msg);
   if (!response) return
 
-  postStatus("Deleting Gmails "+ nbrDeletes + " from " + shtTitle)
+  postStatus("gds", "Deleting Gmails "+ nbrDeletes + " from " + shtTitle)
 
   modal(true)
 
@@ -143,7 +136,7 @@ async function deleteGmails(shtTitle) {
 
     delCntr += msgArr.length
 
-    postStatus(null, delCntr + " emails deleted.")
+    postStatus("gds", null, delCntr + " emails deleted.")
 
     var data =     [
       {
@@ -161,7 +154,7 @@ async function deleteGmails(shtTitle) {
 
   }
 
-  postStatus("Complete<br>", delCntr + " emails deleted.")
+  postStatus("gds", "Complete<br>", delCntr + " emails deleted.")
   
   modal(false)
 
@@ -170,7 +163,7 @@ async function deleteGmails(shtTitle) {
 
 async function onListClick() {
 
-    clearStatus()
+    clearStatus("gds")
 
     var category_selected = $('#gmail-category-select').val();
     var label_selected = $('#gmail-label-select').val();
@@ -249,12 +242,12 @@ async function onListClick() {
         var threads = responseList.result.threads
 
         if (!threads || threads.length == 0) {
-          postStatus("Error", 'No Gmails match the criteria given: <br><br>' + search, 'text-danger')
+          postStatus("gds", "Error", 'No Gmails match the criteria given: <br><br>' + search, 'text-danger')
           modal(false)
           return
         }
                
-        postStatus("Selecting Gmails<br>" + search)
+        postStatus("gds", "Selecting Gmails<br>" + search)
         
         for (var i=0; i<threads.length; i++)    {
 
@@ -266,7 +259,7 @@ async function onListClick() {
                 format: 'full'
             });
 
-            postStatus(null, msgCntr)
+            postStatus("gds", null, msgCntr)
 
             let msgs = responseGet.result.messages
 
@@ -307,7 +300,7 @@ async function onListClick() {
               Math.round((new Date() - startTime) / (1000*60)) + ' minutes<br>' + 
               Math.round((msgCntr * 1000*60) / (new Date() - startTime)) + ' emails per minute'
 
-    postStatus("Complete<br>" + search, msg)
+    postStatus("gds", "Complete<br>" + search, msg)
 
     var response = renameSheet(shtId, search)
 
@@ -317,15 +310,14 @@ async function onListClick() {
 
 }
 
-function postStatus(status, text, textColor = 'text-black') {
-  if (status) $("#dgStatus").html(status).addClass(textColor).removeClass('d-none')
-  if (text)   $("#dgText").html(text).removeClass('d-none')
+function postStatus(idPreFix, status, text, textColor = 'text-black') {
+  if (status) $("#" + idPreFix + "-status").html(status).addClass(textColor).removeClass('d-none')
+  if (text)   $("#" + idPreFix + "-text").html(text).removeClass('d-none')
 
 }
 
-function clearStatus() {
-  $("#dgStatus").html('').addClass('d-none')
-  $("#dgStatus").removeClass((index, className) => (className.match (/\bg-\S+/g) || []).join(' '))
-  $("#dgText").html('').addClass('d-none')
+function clearStatus(idPreFix) {
+  $("#" + idPreFix + "-status").html('').addClass('d-none')
+  $("#" + idPreFix + "-text").html('').addClass('d-none')
   
 }

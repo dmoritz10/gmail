@@ -106,9 +106,11 @@ jQuery(function ($) {
             ;
             // Gmail Delete tab
 
-            $('#sidebar-delete-button').click(onDeleteClick);
-            $('#sidebar-exit-button').click(gotoTab('Home'));
-            $('#sidebar-list-button').click(onListClick);
+            $('#gdd-delete-button').click(onDeleteClick);
+            $('#gds-list-button').click(onListClick);
+
+
+            
             
  
             $('.modal').on('shown.bs.modal', function () {
