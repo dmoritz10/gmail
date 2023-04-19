@@ -3,9 +3,15 @@ function btnGmailDeleteHtml() {
 
     loadDropDowns()
 
-    $('#nav-delete').trigger('click');
     // $('#nav-select').trigger('click');
     gotoTab('GmailDelete')
+    $('#nav-delete').trigger('click');
+
+    // var someTabTriggerEl = document.querySelector('#someTabTrigger')
+    // var tab = new bootstrap.Tab(someTabTriggerEl)
+  
+    // tab.show()
+
 
 }
 
