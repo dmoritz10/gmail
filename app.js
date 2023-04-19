@@ -109,8 +109,11 @@ jQuery(function ($) {
             $('#gdd-delete-button').click(onDeleteClick);
             $('#gds-list-button').click(onListClick);
 
+            alert('1')
+
             $('#gd-nav-select-tab').on('show.bs.modal', loadSheetsToDelete());
 
+            alert('2')
             
  
             $('.modal').on('shown.bs.modal', function () {
