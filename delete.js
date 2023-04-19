@@ -7,10 +7,9 @@ function btnGmailDeleteHtml() {
     gotoTab('GmailDelete')
     // $('#nav-delete').trigger('click');
 
-    var someTabTriggerEl = document.querySelector('#nav-delete')
-    var tab = new bootstrap.Tab(someTabTriggerEl)
-  
-    tab.show()
+    // var someTabTriggerEl = document.querySelector('#nav-delete')
+    // var tab = new bootstrap.Tab(someTabTriggerEl)
+    // tab.show()
 
 
 }
