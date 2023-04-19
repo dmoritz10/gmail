@@ -2,6 +2,7 @@
 function btnGmailDeleteHtml() {
 
     loadDropDowns()
+    $('#nav-delete').trigger('click');
 
     $('#nav-select').trigger('click');
     gotoTab('GmailDelete')
