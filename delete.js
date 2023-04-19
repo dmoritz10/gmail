@@ -4,6 +4,7 @@ function btnGmailDeleteHtml() {
     loadDropDowns()
 
     gotoTab('GmailDelete')
+    gotoTab('select')
 
 }
 
@@ -239,7 +240,7 @@ async function onListClick() {
         var threads = responseList.result.threads
 
         if (!threads || threads.length == 0) {
-          postStatus("Error", 'No Gmails match the criteria given: <br><br>' + search, 'bg-danger')
+          postStatus("Error", 'No Gmails match the criteria given: <br><br>' + search, 'text-danger')
           modal(false)
           return
         }
@@ -307,7 +308,7 @@ async function onListClick() {
 
 }
 
-function postStatus(status, text, textColor = '') {
+function postStatus(status, text, textColor = 'text-black') {
   if (status) $("#dgStatus").html(status).addClass(textColor).removeClass('d-none')
   if (text)   $("#dgText").html(text).removeClass('d-none')
 
