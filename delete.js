@@ -10,27 +10,9 @@ function btnGmailDeleteHtml() {
 
 }
 
-async loadSheetsToDelete() {
+async function loadSheetsToDelete() {
 
   alert('hid an')
-}
-
-async function loadDropDowns() {
-
-    var l = await listGmailLabels()
-    var labels = l.result.labels
-
-    for (var i=0;i<labels.length;i++) {
-        let l = labels[i].name.replace('CATEGORY_', '').replace('DRAFT', 'DRAFTS').toLowerCase()
-        let lbl = l.charAt(0).toUpperCase() + l.slice(1)
-        if (labels[i].type == 'user')   $('#gmail-label-select').append('<option>'+lbl+'</option>')
-        if (labels[i].type == 'system') $('#gmail-category-select').append('<option>'+lbl+'</option>')
-
-      }
-
-}
-
-async function onDeleteClick() {
 
   clearStatus("gds")
 
@@ -71,6 +53,26 @@ async function onDeleteClick() {
     });
 
   }
+
+}
+
+async function loadDropDowns() {
+
+    var l = await listGmailLabels()
+    var labels = l.result.labels
+
+    for (var i=0;i<labels.length;i++) {
+        let l = labels[i].name.replace('CATEGORY_', '').replace('DRAFT', 'DRAFTS').toLowerCase()
+        let lbl = l.charAt(0).toUpperCase() + l.slice(1)
+        if (labels[i].type == 'user')   $('#gmail-label-select').append('<option>'+lbl+'</option>')
+        if (labels[i].type == 'system') $('#gmail-category-select').append('<option>'+lbl+'</option>')
+
+      }
+
+}
+
+async function onDeleteClick() {
+alert('onDeleteClick')
 
 }
 
