@@ -136,7 +136,7 @@ async function deleteGmails(shtTitle) {
 
     delCntr += msgArr.length
 
-    postStatus("gds", null, delCntr + " emails deleted.")
+    postStatus("dgs", null, delCntr + " emails deleted.")
 
     var data =     [
       {
@@ -154,7 +154,7 @@ async function deleteGmails(shtTitle) {
 
   }
 
-  postStatus("gds", "Complete<br>", delCntr + " emails deleted.")
+  postStatus("dgs", "Complete<br>", delCntr + " emails deleted.")
   
   modal(false)
 
@@ -242,12 +242,12 @@ async function onListClick() {
         var threads = responseList.result.threads
 
         if (!threads || threads.length == 0) {
-          postStatus("gds", "Error", 'No Gmails match the criteria given: <br><br>' + search, 'text-danger')
+          postStatus("dgs", "Error", 'No Gmails match the criteria given: <br><br>' + search, 'text-danger')
           modal(false)
           return
         }
                
-        postStatus("gds", "Selecting Gmails<br>" + search)
+        postStatus("dgs", "Selecting Gmails<br>" + search)
         
         for (var i=0; i<threads.length; i++)    {
 
@@ -259,7 +259,7 @@ async function onListClick() {
                 format: 'full'
             });
 
-            postStatus("gds", null, msgCntr)
+            postStatus("dgs", null, msgCntr)
 
             let msgs = responseGet.result.messages
 
@@ -312,21 +312,16 @@ async function onListClick() {
 
 function postStatus(idPreFix, status, text, textColor = 'text-black') {
 
-  console.log('postStatus',"'#" + idPreFix + "-status'" )
-  console.log($("'#" + idPreFix + "-status'"))
+  console.log('postStatus',"#" + idPreFix + "-status" )
+  console.log($("#" + idPreFix + "-status"))
 
-  if (status) $("'#" + idPreFix + "-status'").html(status).addClass(textColor).removeClass('d-none')
-  if (text)   $("'#" + idPreFix + "-text'").html(text).removeClass('d-none')
+  if (status) $("#" + idPreFix + "-status").html(status).addClass(textColor).removeClass('d-none')
+  if (text)   $("#" + idPreFix + "-text").html(text).removeClass('d-none')
 
 }
 
 function clearStatus(idPreFix) {
-  var x = "#gds" + "-status"
-  console.log( $('#btnGmailDelete') )
-  console.log( $('#btn' + 'GmailDelete') )
-  console.log($(x))
-
-  $("#gds" + "-status").html('').addClass('d-none')
+  
   $("#" + idPreFix + "-status").html('').addClass('d-none')
   $("#" + idPreFix + "-text").html('').addClass('d-none')
   
