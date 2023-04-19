@@ -5,12 +5,12 @@ function btnGmailDeleteHtml() {
 
     // $('#nav-select').trigger('click');
     gotoTab('GmailDelete')
-    $('#nav-delete').trigger('click');
+    // $('#nav-delete').trigger('click');
 
-    // var someTabTriggerEl = document.querySelector('#someTabTrigger')
-    // var tab = new bootstrap.Tab(someTabTriggerEl)
+    var someTabTriggerEl = document.querySelector('#nav-delete')
+    var tab = new bootstrap.Tab(someTabTriggerEl)
   
-    // tab.show()
+    tab.show()
 
 
 }
@@ -301,7 +301,7 @@ async function onListClick() {
 
     console.log('run time', i, msgCntr,  parseInt((new Date() - startTime) / (1000*60)), parseInt((msgCntr * 1000*60) / (new Date() - startTime)))
 
-    var msg = msgCntr + ' emails listed<br>' + 
+    var msg = msgCntr + ' emails selected<br>' + 
               Math.round((new Date() - startTime) / (1000*60)) + ' minutes<br>' + 
               Math.round((msgCntr * 1000*60) / (new Date() - startTime)) + ' emails per minute'
 
