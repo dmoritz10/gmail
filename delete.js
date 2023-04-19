@@ -321,6 +321,9 @@ function postStatus(idPreFix, status, text, textColor = 'text-black') {
 }
 
 function clearStatus(idPreFix) {
+  console.log("'#gds" + "-status'")
+
+  $("'#gds" + "-status'").html('').addClass('d-none')
   $("'#" + idPreFix + "-status'").html('').addClass('d-none')
   $("'#" + idPreFix + "-text'").html('').addClass('d-none')
   
