@@ -322,6 +322,9 @@ function postStatus(idPreFix, status, text, textColor = 'text-black') {
 
 function clearStatus(idPreFix) {
   console.log("'#gds" + "-status'")
+  console.log( $('#btnGmailDelete') )
+  console.log($("'#gds" + "Status'"))
+  console.log($("'#gds" + "-status'"))
 
   $("'#gds" + "-status'").html('').addClass('d-none')
   $("'#" + idPreFix + "-status'").html('').addClass('d-none')
