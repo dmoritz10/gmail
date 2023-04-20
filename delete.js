@@ -62,11 +62,11 @@ async function loadSheetsToDelete() {
       ele.find('#gddNbrGmails')[0].innerHTML = nbrDeletes
       ele.find('#gddSheetDate')[0].innerHTML = 'hi dan'
   
-      ele.find('#btnGddDelete')[0].setAttribute("onclick", "deleteGmails(" + shtTitle + ")");
+      ele.find('#btnGddDelete')[0].setAttribute("onclick", "deleteGmails('" + shtTitle + "')");
   
-      ele.find('#btnGddRemoveSheet')[0].setAttribute("onclick", "removeSheet(" + shtTitle + ")");
+      ele.find('#btnGddRemoveSheet')[0].setAttribute("onclick", "removeSheet('" + shtTitle + "')");
   
-      ele.find('#btnGddShowGmails')[0].setAttribute("onclick", "showGmails(" + shtTitle  + ")");
+      ele.find('#btnGddShowGmails')[0].setAttribute("onclick", "showGmails('" + shtTitle  + "')");
   
       ele.removeClass('d-none');
   
