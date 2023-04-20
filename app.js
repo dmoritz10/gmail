@@ -106,15 +106,15 @@ jQuery(function ($) {
             ;
             // Gmail Delete tab
 
-            $('#gd-nav-delete-tab').click(onDeleteClick);
-            $('#gd-nav-select-tab').click(onListClick);
+            $('#gd-nav-delete-tab').click(loadSheetsToDelete);
+            // $('#gd-nav-select-tab').click(onListClick);
 
             $('#gd-nav-delete-tab').on('shown.bs.tab', loadSheetsToDelete);
 
 
 
             // all
-            
+
             $('.modal').on('shown.bs.modal', function () {
                 $(this).find('[autofocus]').focus();
             });
