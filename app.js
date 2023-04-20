@@ -109,8 +109,8 @@ jQuery(function ($) {
             $('#gd-nav-delete-tab').click(loadSheetsToDelete);
             // $('#gd-nav-select-tab').click(onListClick);
 
-            $('#gd-nav-delete-tab').on('shown.bs.tab', loadSheetsToDelete);
-
+            // $('#gd-nav-delete-tab').on('shown.bs.tab', loadSheetsToDelete);
+            $('#gds-list-button').click(onListClick);
 
 
             // all
