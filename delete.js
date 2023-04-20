@@ -55,7 +55,7 @@ console.log('colhdrs', shts[s].colHdrs)
     let shtTitle = s
 
    
-    if (shts[s].rowCount == 0) continue
+    // if (shts[s].rowCount == 0) continue
 
     var shtHdrs = shts[s].colHdrs
     // var shtArr = shts[s].vals
