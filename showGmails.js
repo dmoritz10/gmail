@@ -1,10 +1,13 @@
 
 async function showGmails(shtTitle) {
 
+  alert('hi dan')
+
     var objSht = await openShts(
         [
           { title: shtTitle, type: "all" }
         ])
+
 
     if (objSht[shtTitle].rowCount == 0) return
 
@@ -22,9 +25,11 @@ async function showGmails(shtTitle) {
 
     var sht = []
 
+    console.log('sub',subjectArr )
+
     for (let i=0;i<subjectArr.length;i++) {
 
-      sht.push([subjectArr[i], msgDateArr[i], val])
+      sht.push([subjectArr[i], msgDateArr[i]])
 
     }
     
