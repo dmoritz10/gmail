@@ -3,8 +3,8 @@ function btnGmailDeleteHtml() {
 
     loadDropDowns()
 
-    $('#gds-nav-select').addClass('active show');
     gotoTab('GmailDelete')
+    $('#gds-nav-select').addClass('active show');
 
 }
 
@@ -188,6 +188,26 @@ async function deleteGmails(shtTitle) {
   postStatus("dgs", "Complete<br>", delCntr + " emails deleted.")
   
   modal(false)
+
+}
+
+async function showGmails(shtTitle) {
+
+  var objSht = await openShts(
+    [
+      { title: shtTitle, type: "all" }
+    ])
+
+  
+
+
+}
+
+async function removeSheet(shtTitle) {
+
+  var shtId = await getSheetId(shtTitle)
+  var response = await deleteSheet(shtId)
+  console.log('response', response)
 
 }
 
