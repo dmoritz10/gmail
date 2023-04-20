@@ -330,7 +330,7 @@ async function onListClick() {
                 mostRecentMsg.getFullYear() + '-' + (mostRecentMsg.getMonth()*1+1)+'' + '-' + mostRecentMsg.getDate()+'',
                 msgIds.length,
                 JSON.stringify(msgs[0].labelIds),
-                'List',
+                'Listed',
                 JSON.stringify(msgIds)
             ])
 
