@@ -198,17 +198,17 @@ async function deleteGmails(shtTitle) {
 
 }
 
-async function showGmails(shtTitle) {
+// async function showGmails(shtTitle) {
 
-  var objSht = await openShts(
-    [
-      { title: shtTitle, type: "all" }
-    ])
+//   var objSht = await openShts(
+//     [
+//       { title: shtTitle, type: "all" }
+//     ])
 
   
 
 
-}
+// }
 
 async function removeSheet(shtTitle) {
 
