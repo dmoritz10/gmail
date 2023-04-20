@@ -39,8 +39,8 @@ async function loadSheetsToDelete() {
 
   for (let s in shts) {
 
-console.log('s', s)
-console.log('colhdrs', s,colHdrs)
+console.log('s', s, shts[s])
+console.log('colhdrs', shts[s].colHdrs)
 
   }
 
