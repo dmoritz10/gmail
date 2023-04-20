@@ -16,7 +16,7 @@ async function showGmails(shtTitle) {
     if (subjectCol<0 || msgDateCol<0) return
 
     var subjectArr = shtArr.map(x => x[subjectCol]);
-    var msgDateArr = shtArr.map(x => x[stamsgDateColtCol]);
+    var msgDateArr = shtArr.map(x => x[msgDateCol]);
 
     // var nbrDeletes = statArr.filter(x => x !== "Deleted").length;
 
