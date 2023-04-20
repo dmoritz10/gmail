@@ -46,7 +46,7 @@ async function loadSheetsToDelete() {
       var statCol = shtHdrs.indexOf('Status')
       var msgIdsCol = shtHdrs.indexOf('Message Ids')
 
-      if (shtHdrs<0 || shtArr<0) continue
+      if (statCol<0 || msgIdsCol<0) continue
 
       
       var msgIdsArr = shtArr.map(x => x[msgIdsCol]);
