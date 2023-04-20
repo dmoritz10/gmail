@@ -115,7 +115,7 @@ jQuery(function ($) {
 
             alert('2')
 
-            var tabEl = document.querySelector('button[data-bs-toggle="tab"]')
+            var tabEl = document.querySelectorAll('button[data-bs-toggle="tab"]')
             console.log('tabE1',tabEl)
 tabEl.addEventListener('shown.bs.tab', function (event) {alert('4')
   event.target // newly activated tab
