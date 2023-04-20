@@ -5,7 +5,7 @@ function btnGmailDeleteHtml() {
 
     $('#gds-nav-select').addClass('active show');
     gotoTab('GmailDelete')
-    
+
 }
 
 async function loadSheetsToDelete() {
@@ -16,38 +16,64 @@ async function loadSheetsToDelete() {
 
   var sheets = shts.result.sheets
 
+  var $tblSheets = $("#gddContainer > .d-none").eq(0)  // the 1st one is a template which is always d-none
+
+  var x = $tblSheets.clone();
+  $("#gddContainer").empty();
+  x.appendTo("#gddContainer");
+
+  
   if (sheets) {
 
     var nbrSheets = 0
-    let inputOptions = []
-    inputOptions.push({
-      text: 'Choose sheet ...',
-      value: ''
-    })
-
   
     for (var j = 0; j < sheets.length; j++) {
 
       var sht = sheets[j].properties
 
-      // if (sht.gridProperties.columnCount != 6) continue
 
       let shtTitle = sht.title
 
-      inputOptions.push({
-        text: shtTitle,
-        value: shtTitle
-      })
+      var objSht = await openShts(
+        [
+          { title: shtTitle, type: "all" }
+        ])
+
+      var shtHdrs = objSht[shtTitle].colHdrs
+      var shtArr = objSht[shtTitle].vals
+      var statCol = shtHdrs.indexOf('Status')
+      var msgIdsCol = shtHdrs.indexOf('Message Ids')
+
+      if (shtHdrs<0 || shtArr<0) continue
+
+      
+      var msgIdsArr = shtArr.map(x => x[msgIdsCol]);
+      var statArr = shtArr.map(x => x[statCol]);
+    
+      var nbrDeletes = statArr.filter(x => x !== "Deleted").length;
+
+      if (nbrDeletes == 0) continue
+
+      var ele = $tblSheets.clone();
+
+      ele.find('#gddDocument')[0].innerHTML = shtTitle
+      ele.find('#gddNbrGmails')[0].innerHTML = nbrDeletes
+      ele.find('#gddSheetDate')[0].innerHTML = 'hi dan'
+  
+      ele.find('#btnGddDelete')[0].setAttribute("onclick", "deleteGmails(" + shtTitle + ")");
+  
+      ele.find('#btnGddRemoveSheet')[0].setAttribute("onclick", "removeSheet(" + shtTitle + ")");
+  
+      ele.find('#btnGddShowGmails')[0].setAttribute("onclick", "showGmails(" + shtTitle + ")");
+  
+      ele.removeClass('d-none');
+  
+      ele.appendTo("#trpContainer");
+  
         
     }
 
-    bootbox.prompt({
-      title: 'Select Sheet with emails to delete',
-      inputType: 'select',
-      inputOptions:inputOptions,
-      callback: (sht) => deleteGmails(sht)
-    });
-
+   
   }
 
 }

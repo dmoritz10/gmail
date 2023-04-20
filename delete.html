@@ -96,7 +96,49 @@
 
       <div class="tab-pane fade" id="gdd-nav-delete" role="tabpanel" aria-labelledby="gd-nav-delete-tab">
 
-        <div class="row m-1 pt-3">
+
+        <div id="gddContainer" class=" mt-0 pt-3 pb-4 px-2" style="background-color:#eeefef">
+          <div class="m-0 p-3 pb-0 mb-3 align-items-center border rounded d-none" style="background:white;">
+      
+              <div class="row">
+                <div class="col px-1">
+                  <div id="gddSheetName" class="text-success label  text-start h3 pb-0 align-middle "></div>
+                </div>
+      
+                <div class="col-1 px-0 align-right">
+                  <div class="align-center cursor-pointer" id="btnGddDelete" data-toggle="tooltip" title="Delete Gmails">
+                      <i class="material-icons" style="color:purple;">delete</i></div>
+                </div>
+      
+                <div class="col-1 mx-0 align-right">
+                    <div class="align-center cursor-pointer" id="btnGddRemoveSheet" data-toggle="tooltip" title="Remove List">
+                      <i class="material-icons" style="color:black;">star</i></div>        
+                </div>
+      
+                <div class="col-1 me-2">
+                  <button id="btnGddShowDetail" class="border-0 bg-transparent"><i
+                      class="material-icons">arrow_forward_ios</i></button>
+                </div>
+              </div>
+      
+              <div class="row">
+      
+                <div class="col-5 px-1">
+                  <div id="gddNbrGmails" class="text-success h4 pt-1"></div>
+                </div>
+      
+                <div class="col px-1 ">
+                  <div id="gddSheetDate" class="h6 pt-2 me-5 float-end"></div>
+                </div>
+                
+              </div>
+      
+          </div>
+      
+        </div>
+
+
+        <!-- <div class="row m-1 pt-3">
           <div class="col text-center">
             <div class="btn-group" role="group">
                 <button id="gdd-delete-button" type="button" class="btn btn-primary mx-1" >Delete</button>
@@ -109,7 +151,7 @@
             <div id="gdd-status" class="col h5 d-none p-2"></div>
             <div id="gdd-text"   class="col h5 d-none p-2"></div>
           </div>
-        </div>
+        </div> -->
 
       </div>
 
