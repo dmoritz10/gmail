@@ -106,10 +106,10 @@ jQuery(function ($) {
             ;
             // Gmail Delete tab
 
-            $('#gd-nav-delete-tab').click(onDeleteClick);
-            $('#gd-nav-select-tab').click(onListClick);
-            $('#gd-nav-delete-tab').click(() => alert('delete tab'));
-            $('#gd-nav-select-tab').click(() => alert('select tab'));
+            // $('#gd-nav-delete-tab').click(onDeleteClick);
+            // $('#gd-nav-select-tab').click(onListClick);
+            // $('#gd-nav-delete-tab').click(() => alert('delete tab'));
+            // $('#gd-nav-select-tab').click(() => alert('select tab'));
             alert('1')
 
             $('#gd-nav-delete-tab').on('shown.bs.tab', loadSheetsToDelete);
