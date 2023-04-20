@@ -111,11 +111,19 @@ jQuery(function ($) {
 
             alert('1')
 
-            $('#gd-nav-select-tab').on('show.bs.modal', loadSheetsToDelete());
+            $('#gd-nav-delete-tab').on('show.bs.modal', loadSheetsToDelete());
 
             alert('2')
+
+            var tabEl = document.querySelector('button[data-bs-toggle="tab"]')
+            console.log('tabE1',tabEl)
+tabEl.addEventListener('shown.bs.tab', function (event) {alert('4')
+  event.target // newly activated tab
+  event.relatedTarget // previous active tab
+  console.log('shown', event.target, event.relatedTarget)
+})
             
- 
+ alert('3')
             $('.modal').on('shown.bs.modal', function () {
                 $(this).find('[autofocus]').focus();
             });
