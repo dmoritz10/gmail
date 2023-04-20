@@ -37,6 +37,13 @@ async function loadSheetsToDelete() {
 
   var shts = await openShts(openshtArr)
 
+  for (let s in shts) {
+
+console.log('s', s)
+console.log('colhdrs', s,colHdrs)
+
+  }
+
 console.log('shts', shts)
 return
   var $tblSheets = $("#gddContainer > .d-none").eq(0)  // the 1st one is a template which is always d-none
