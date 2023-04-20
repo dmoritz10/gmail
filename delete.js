@@ -35,17 +35,6 @@ async function loadSheetsToDelete() {
 
   }
 
-  var shts = await openShts(openshtArr)
-
-  for (let s in shts) {
-
-console.log('s', s, shts[s])
-console.log('colhdrs', shts[s].colHdrs)
-
-  }
-
-console.log('shts', shts)
-return
   var $tblSheets = $("#gddContainer > .d-none").eq(0)  // the 1st one is a template which is always d-none
 
   var x = $tblSheets.clone();
@@ -53,22 +42,23 @@ return
   x.appendTo("#gddContainer");
 
   
+  var shts = await openShts(openshtArr)
+
+  for (let s in shts) {
+
+console.log('s', s, shts[s])
+console.log('colhdrs', shts[s].colHdrs)
+
  
-  for (var j = 0; j < shts.length; j++) {
+    var sht = shts[s]
 
-    var sht = shts[j].properties
+    let shtTitle = s
 
-    let shtTitle = sht.title
+   
+    if (shts[s].rowCount == 0) continue
 
-    var objSht = await openShts(
-      [
-        { title: shtTitle, type: "all" }
-      ])
-
-    if (objSht[shtTitle].rowCount == 0) continue
-
-    var shtHdrs = objSht[shtTitle].colHdrs
-    var shtArr = objSht[shtTitle].vals
+    var shtHdrs = shts[s].colHdrs
+    var shtArr = shts[s].vals
     var statCol = shtHdrs.indexOf('Status')
     var msgIdsCol = shtHdrs.indexOf('Message Ids')
 
@@ -97,7 +87,6 @@ return
     ele.removeClass('d-none');
 
     ele.appendTo("#gddContainer");
-
       
   }
 
