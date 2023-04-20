@@ -6,6 +6,8 @@ function btnGmailDeleteHtml() {
     gotoTab('GmailDelete')
     gotoGmailDeleteTab('#gds-nav-select')
 
+}
+
 function gotoGmailDeleteTab(tab) {
 
   gotoTab('GmailDelete')
