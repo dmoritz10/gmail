@@ -4,8 +4,13 @@ function btnGmailDeleteHtml() {
     loadDropDowns()
 
     gotoTab('GmailDelete')
-    $('#gds-nav-select').addClass('active show');
+    gotoGmailDeleteTab('#gds-nav-select')
 
+function gotoGmailDeleteTab(tab) {
+
+  gotoTab('GmailDelete')
+  $('#' + tab).addClass("active show");
+  
 }
 
 async function loadSheetsToDelete() {
