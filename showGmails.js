@@ -20,7 +20,7 @@ async function showGmails(shtTitle) {
 
     // var nbrDeletes = statArr.filter(x => x !== "Deleted").length;
 
-    for (let i=0;i<subjectArr.length;i++)v{
+    for (let i=0;i<subjectArr.length;i++) {
 
       sht.push([subjectArr[i], msgDateArr[i], val])
 
