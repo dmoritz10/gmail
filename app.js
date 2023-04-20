@@ -111,7 +111,7 @@ jQuery(function ($) {
 
             alert('1')
 
-            $('#gd-nav-delete-tab').on('shown.bs.modal', loadSheetsToDelete);
+            $('#gd-nav-delete-tab').on('shown.bs.tab', loadSheetsToDelete);
 
             alert('2')
 
