@@ -21,6 +21,8 @@ async function loadSheetsToDelete() {
 
   var shts = await getSheets()
 
+  console.log('shts', shts)
+
   var sheets = shts.result.sheets
 
   if (!sheets) return
