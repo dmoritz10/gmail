@@ -31,7 +31,7 @@ async function loadSheetsToDelete() {
     var sht = sheets[j].properties
 
     let shtTitle = sht.title
-    openshtArr.push({ title: shtTitle, type: "all" })
+    openshtArr.push({ title: shtTitle, type: "headers" })
 
   }
 
