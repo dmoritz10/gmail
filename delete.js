@@ -70,7 +70,7 @@ async function loadSheetsToDelete() {
   
       ele.removeClass('d-none');
   
-      ele.appendTo("#trpContainer");
+      ele.appendTo("#gddContainer");
   
         
     }
