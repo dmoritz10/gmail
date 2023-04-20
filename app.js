@@ -106,32 +106,11 @@ jQuery(function ($) {
             ;
             // Gmail Delete tab
 
-            // $('#gd-nav-delete-tab').click(onDeleteClick);
-            // $('#gd-nav-select-tab').click(onListClick);
-            // $('#gd-nav-delete-tab').click(() => alert('delete tab'));
-            // $('#gd-nav-select-tab').click(() => alert('select tab'));
-            alert('1')
-
             $('#gd-nav-delete-tab').on('shown.bs.tab', loadSheetsToDelete);
 
-            alert('2')
-
-//             var tabEl = document.getElementById('gd-nav-delete-tab')
-//             console.log('tabE1',tabEl)
-// tabEl.addEventListener('shown.bs.tab', function (event) {alert('delete')
-//   event.target // newly activated tab
-//   event.relatedTarget // previous active tab
-//   console.log('shown', event.target, event.relatedTarget)
-// })
-// var tabEl = document.getElementById('gd-nav-select-tab')
-// console.log('tabE1',tabEl)
-// tabEl.addEventListener('shown.bs.tab', function (event) {alert('select')
-// event.target // newly activated tab
-// event.relatedTarget // previous active tab
-// console.log('shown', event.target, event.relatedTarget)
-// })
             
- alert('3')
+
+
             $('.modal').on('shown.bs.modal', function () {
                 $(this).find('[autofocus]').focus();
             });
