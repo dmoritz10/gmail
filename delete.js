@@ -23,6 +23,22 @@ async function loadSheetsToDelete() {
 
   var sheets = shts.result.sheets
 
+  if (!sheets) return
+
+  var openshtArr = []
+  for (var j = 0; j < sheets.length; j++) {
+
+    var sht = sheets[j].properties
+
+    let shtTitle = sht.title
+    openshtArr.push({ title: shtTitle, type: "all" })
+
+  }
+
+  var shts = await openShts(openshtArr)
+
+console.log('shts', shts)
+return
   var $tblSheets = $("#gddContainer > .d-none").eq(0)  // the 1st one is a template which is always d-none
 
   var x = $tblSheets.clone();
@@ -30,59 +46,52 @@ async function loadSheetsToDelete() {
   x.appendTo("#gddContainer");
 
   
-  if (sheets) {
+ 
+  for (var j = 0; j < shts.length; j++) {
 
-    var nbrSheets = 0
+    var sht = shts[j].properties
+
+    let shtTitle = sht.title
+
+    var objSht = await openShts(
+      [
+        { title: shtTitle, type: "all" }
+      ])
+
+    if (objSht[shtTitle].rowCount == 0) continue
+
+    var shtHdrs = objSht[shtTitle].colHdrs
+    var shtArr = objSht[shtTitle].vals
+    var statCol = shtHdrs.indexOf('Status')
+    var msgIdsCol = shtHdrs.indexOf('Message Ids')
+
+    if (statCol<0 || msgIdsCol<0) continue
+
+    
+    var msgIdsArr = shtArr.map(x => x[msgIdsCol]);
+    var statArr = shtArr.map(x => x[statCol]);
   
-    for (var j = 0; j < sheets.length; j++) {
+    var nbrDeletes = statArr.filter(x => x !== "Deleted").length;
 
-      var sht = sheets[j].properties
+    if (nbrDeletes == 0) continue
 
+    var ele = $tblSheets.clone();
 
-      let shtTitle = sht.title
+    ele.find('#gddSheetName')[0].innerHTML = shtTitle
+    ele.find('#gddNbrGmails')[0].innerHTML = nbrDeletes
+    ele.find('#gddSheetDate')[0].innerHTML = 'hi dan'
 
-      var objSht = await openShts(
-        [
-          { title: shtTitle, type: "all" }
-        ])
+    ele.find('#btnGddDelete')[0].setAttribute("onclick", "deleteGmails('" + shtTitle + "')");
 
-      if (objSht[shtTitle].rowCount == 0) continue
+    ele.find('#btnGddRemoveSheet')[0].setAttribute("onclick", "removeSheet('" + shtTitle + "')");
 
-      var shtHdrs = objSht[shtTitle].colHdrs
-      var shtArr = objSht[shtTitle].vals
-      var statCol = shtHdrs.indexOf('Status')
-      var msgIdsCol = shtHdrs.indexOf('Message Ids')
+    ele.find('#btnGddShowGmails')[0].setAttribute("onclick", "showGmails('" + shtTitle  + "')");
 
-      if (statCol<0 || msgIdsCol<0) continue
+    ele.removeClass('d-none');
+
+    ele.appendTo("#gddContainer");
 
       
-      var msgIdsArr = shtArr.map(x => x[msgIdsCol]);
-      var statArr = shtArr.map(x => x[statCol]);
-    
-      var nbrDeletes = statArr.filter(x => x !== "Deleted").length;
-
-      if (nbrDeletes == 0) continue
-
-      var ele = $tblSheets.clone();
-
-      ele.find('#gddSheetName')[0].innerHTML = shtTitle
-      ele.find('#gddNbrGmails')[0].innerHTML = nbrDeletes
-      ele.find('#gddSheetDate')[0].innerHTML = 'hi dan'
-  
-      ele.find('#btnGddDelete')[0].setAttribute("onclick", "deleteGmails('" + shtTitle + "')");
-  
-      ele.find('#btnGddRemoveSheet')[0].setAttribute("onclick", "removeSheet('" + shtTitle + "')");
-  
-      ele.find('#btnGddShowGmails')[0].setAttribute("onclick", "showGmails('" + shtTitle  + "')");
-  
-      ele.removeClass('d-none');
-  
-      ele.appendTo("#gddContainer");
-  
-        
-    }
-
-   
   }
 
 }
@@ -103,7 +112,6 @@ async function loadDropDowns() {
 }
 
 async function onDeleteClick() {
-alert('onDeleteClick')
 
 }
 
@@ -197,18 +205,6 @@ async function deleteGmails(shtTitle) {
   modal(false)
 
 }
-
-// async function showGmails(shtTitle) {
-
-//   var objSht = await openShts(
-//     [
-//       { title: shtTitle, type: "all" }
-//     ])
-
-  
-
-
-// }
 
 async function removeSheet(shtTitle) {
 
