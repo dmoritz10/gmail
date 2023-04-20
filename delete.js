@@ -39,6 +39,8 @@ async function loadSheetsToDelete() {
           { title: shtTitle, type: "all" }
         ])
 
+      if (objSht[shtTitle].rowCount == 0) continue
+
       var shtHdrs = objSht[shtTitle].colHdrs
       var shtArr = objSht[shtTitle].vals
       var statCol = shtHdrs.indexOf('Status')
