@@ -3,16 +3,12 @@ function btnGmailDeleteHtml() {
 
     loadDropDowns()
 
-    $('#gd-nav-select-tab').trigger('click');     // the only way I can get the Select tab to active show
+    $('#gds-nav-select').addClass('active show');
     gotoTab('GmailDelete')
-    $('#gd-nav-select-tab').trigger('click');
-
-
+    
 }
 
 async function loadSheetsToDelete() {
-
-  alert('hid an')
 
   clearStatus("gds")
 
