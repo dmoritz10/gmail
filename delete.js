@@ -266,7 +266,9 @@ async function onListClick() {
     var shtId = createRsp.result.replies[0].addSheet.properties.sheetId
     var shtTitle = createRsp.result.replies[0].addSheet.properties.title
 
-    var clearRsp = await clearSheet(shtId)
+    var clearRsp =  await deleteSheetRow(1, shtTitle, 5000)
+   
+console.log('clearRsp', clearRsp)
 
     var listThreads = []
     listThreads.push(['Subject', 'Last Message Date', 'Message Count', 'Labels', 'Status', 'Message Ids'])
