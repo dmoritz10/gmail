@@ -115,12 +115,19 @@ jQuery(function ($) {
 
             alert('2')
 
-            var tabEl = document.querySelectorAll('button[data-bs-toggle="tab"]')
+            var tabEl = document.getElementById('gd-nav-delete-tab')
             console.log('tabE1',tabEl)
-tabEl.addEventListener('shown.bs.tab', function (event) {alert('4')
+tabEl.addEventListener('shown.bs.tab', function (event) {alert('delete')
   event.target // newly activated tab
   event.relatedTarget // previous active tab
   console.log('shown', event.target, event.relatedTarget)
+})
+var tabEl = document.getElementById('gd-nav-select-tab')
+console.log('tabE1',tabEl)
+tabEl.addEventListener('shown.bs.tab', function (event) {alert('select')
+event.target // newly activated tab
+event.relatedTarget // previous active tab
+console.log('shown', event.target, event.relatedTarget)
 })
             
  alert('3')
