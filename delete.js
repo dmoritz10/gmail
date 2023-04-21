@@ -127,7 +127,7 @@ async function deleteGmails(shtTitle) {
 
   var nbrDeletes = statArr.filter(x => x !== "Deleted").length;
 
-  var msg = "Ok to delete " + nbrDeletes + " emails from " + shtTitle + " ?"
+  var msg = "Ok to delete " + nbrDeletes + " emails from your Gmail account ?"
   var response = await confirm(msg);
   if (!response) return
 
@@ -200,6 +200,10 @@ async function deleteGmails(shtTitle) {
 
 async function removeSheet(shtTitle) {
 
+  var msg = "Ok to remove permanently" + shtTitle + " list ?"
+  var response = await confirm(msg);
+  if (!response) return
+
   var shtId = await getSheetId(shtTitle)
   var response = await deleteSheet(shtId)
 
@@ -265,8 +269,6 @@ async function onListClick() {
 
     var clearRsp =  await deleteSheetRow(1, shtTitle, 5000)
    
-console.log('clearRsp', clearRsp)
-
     var listThreads = []
     listThreads.push(['Subject', 'Last Message Date', 'Message Count', 'Labels', 'Status', 'Message Ids'])
                     
