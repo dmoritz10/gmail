@@ -15,8 +15,9 @@ async function showGmails(shtTitle) {
     var shtArr = objSht[shtTitle].vals
     var subjectCol = shtHdrs.indexOf('Subject')
     var msgDateCol = shtHdrs.indexOf('Last Message Date')
+    var labelsCol = shtHdrs.indexOf('Labels')
 
-    if (subjectCol<0 || msgDateCol<0) return
+    if (subjectCol<0 || msgDateCol<0 || labelsCol<0) return
 
     var subjectArr = shtArr.map(x => x[subjectCol]);
     var msgDateArr = shtArr.map(x => x[msgDateCol]);
@@ -25,7 +26,6 @@ async function showGmails(shtTitle) {
 
     var sht = []
 
-    console.log('sub',subjectArr )
 
     for (let i=0;i<subjectArr.length;i++) {
 
@@ -41,7 +41,7 @@ async function showGmails(shtTitle) {
       .setData(sht)
       .setTableClass('table table-borderless')
       .setTrClass('d-flex')
-      .setTcClass(['text-end col-4 h5 text-success', 'text-start col h4', 'col-1'])
+      .setTcClass(['text-end col h5 text-success', 'text-start col-4 h5', 'col-1'])
       .setTdClass('py-1 pb-0 border-0 align-bottom border-bottom')
       .build('#tblGmails');
   
