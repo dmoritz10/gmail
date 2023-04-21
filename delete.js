@@ -341,14 +341,13 @@ async function onListClick() {
             ])
 
             console.log('progress', i, msgIds.length, msgCntr,  parseInt(msgCntr * 1000*60 / (new Date() - startTime)))
+            
+            msgCntr ++
+            postStatus("gds", null, msgCntr)
 
         }
-        
+
         var response = await appendSheetRow(listThreads, shtTitle)
-
-        msgCntr += threads.length
-        postStatus("gds", null, msgCntr)
-
 
         listThreads = []
 
