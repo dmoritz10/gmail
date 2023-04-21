@@ -8,6 +8,7 @@ async function showGmails(shtTitle) {
           { title: shtTitle, type: "all" }
         ])
 
+    $('#gdddSheetName').innerHTML = shtTitle
 
     if (objSht[shtTitle].rowCount == 0) return
 
