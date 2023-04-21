@@ -127,11 +127,11 @@ async function deleteGmails(shtTitle) {
 
   var nbrDeletes = statArr.filter(x => x !== "Deleted").length;
 
-  var msg = "Ok to delete " + nbrDeletes + " emails from your Gmail account ?"
+  var msg = "Ok to delete " + nbrDeletes + " email threads from your Gmail account ?"
   var response = await confirm(msg);
   if (!response) return
 
-  postStatus("gds", "Deleting Gmails "+ nbrDeletes + " from " + shtTitle)
+  postStatus("gds", "Deleting Gmail threads "+ nbrDeletes + " from " + shtTitle)
 
   modal(true)
 
@@ -340,12 +340,12 @@ async function onListClick() {
                 JSON.stringify(msgIds)
             ])
 
-            msgCntr += msgIds.length
-
             console.log('progress', i, msgIds.length, msgCntr,  parseInt(msgCntr * 1000*60 / (new Date() - startTime)))
 
         }
         var response = await appendSheetRow(listThreads, shtTitle)
+
+        msgCntr += threads.length
 
         listThreads = []
 
@@ -353,7 +353,7 @@ async function onListClick() {
 
     console.log('run time', i, msgCntr,  parseInt((new Date() - startTime) / (1000*60)), parseInt((msgCntr * 1000*60) / (new Date() - startTime)))
 
-    var msg = msgCntr + ' emails selected<br>' + 
+    var msg = msgCntr + ' email threads selected<br>' + 
               Math.round((new Date() - startTime) / (1000*60)) + ' minutes<br>' + 
               Math.round((msgCntr * 1000*60) / (new Date() - startTime)) + ' emails per minute'
 
