@@ -204,6 +204,8 @@ async function removeSheet(shtTitle) {
   var response = await deleteSheet(shtId)
   console.log('response', response)
 
+  loadSheetsToDelete()
+
 }
 
 
