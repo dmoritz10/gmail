@@ -30,10 +30,8 @@ async function loadSheetsToDelete() {
   var openshtArr = []
   for (var j = 0; j < sheets.length; j++) {
 
-    var sht = sheets[j].properties
-
     let shtTitle = sht.title
-    openshtArr.push({ title: shtTitle, type: "headers" })
+    openshtArr.push({ title: shtTitle, type: "all" })
 
   }
 
@@ -57,28 +55,28 @@ console.log('colhdrs', shts[s].colHdrs)
     let shtTitle = s
 
    
-    // if (shts[s].rowCount == 0) continue
+    if (shts[s].rowCount == 0) continue
 
     var shtHdrs = shts[s].colHdrs
-    // var shtArr = shts[s].vals
+    var shtArr = shts[s].vals
     var statCol = shtHdrs.indexOf('Status')
     var msgIdsCol = shtHdrs.indexOf('Message Ids')
 
     if (statCol<0 || msgIdsCol<0) continue
 
     
-    // var msgIdsArr = shtArr.map(x => x[msgIdsCol]);
-    // var statArr = shtArr.map(x => x[statCol]);
+    var msgIdsArr = shtArr.map(x => x[msgIdsCol]);
+    var statArr = shtArr.map(x => x[statCol]);
   
-    // var nbrDeletes = statArr.filter(x => x !== "Deleted").length;
+    var nbrDeletes = statArr.filter(x => x !== "Deleted").length;
 
-    // if (nbrDeletes == 0) continue
+    if (nbrDeletes == 0) continue
 
     var ele = $tblSheets.clone();
 
     ele.find('#gddSheetName')[0].innerHTML = shtTitle
     ele.find('#gddNbrGmails')[0].innerHTML = shts[s].rowCount
-    ele.find('#gddSheetDate')[0].innerHTML = 'hi dan'
+    ele.find('#gddSheetDate')[0].innerHTML = nbrDeletes
 
     ele.find('#btnGddDelete')[0].setAttribute("onclick", "deleteGmails('" + shtTitle + "')");
 
