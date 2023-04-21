@@ -1,14 +1,12 @@
 
 async function showGmails(shtTitle) {
 
-  alert('hi dan')
-
     var objSht = await openShts(
         [
           { title: shtTitle, type: "all" }
         ])
 
-    $('#gdddSheetName').innerHTML = shtTitle
+    
 
     if (objSht[shtTitle].rowCount == 0) return
 
@@ -24,6 +22,9 @@ async function showGmails(shtTitle) {
     var msgDateArr = shtArr.map(x => x[msgDateCol]);
 
     // var nbrDeletes = statArr.filter(x => x !== "Deleted").length;
+
+    $('#gdddSheetName').innerHTML = shtTitle
+    $('#gdddNbrGmails').innerHTML = subjectArr.length
 
     var sht = []
 
