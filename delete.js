@@ -174,7 +174,7 @@ async function deleteGmails(shtTitle) {
 
     delCntr += msgArr.length
 
-    postStatus("dgs", null, delCntr + " emails deleted.")
+    postStatus("gds", null, delCntr + " emails deleted.")
 
     var data =     [
       {
@@ -198,7 +198,7 @@ async function deleteGmails(shtTitle) {
   loadSheetsToDelete()
 
 
-  postStatus("dgs", "Complete<br>", delCntr + " emails deleted.")
+  postStatus("gds", "Complete<br>", delCntr + " emails deleted.")
   
   modal(false)
 
@@ -299,12 +299,12 @@ async function onListClick() {
         var threads = responseList.result.threads
 
         if (!threads || threads.length == 0) {
-          postStatus("dgs", "Error", 'No Gmails match the criteria given: <br><br>' + search, 'text-danger')
+          postStatus("gds", "Error", 'No Gmails match the criteria given: <br><br>' + search, 'text-danger')
           modal(false)
           return
         }
                
-        postStatus("dgs", "Selecting Gmails<br>" + search)
+        postStatus("gds", "Selecting Gmails<br>" + search)
         
         for (var i=0; i<threads.length; i++)    {
 
@@ -316,7 +316,7 @@ async function onListClick() {
                 format: 'full'
             });
 
-            postStatus("dgs", null, msgCntr)
+            postStatus("gds", null, msgCntr)
 
             let msgs = responseGet.result.messages
 
