@@ -192,6 +192,12 @@ async function deleteGmails(shtTitle) {
 
   }
 
+  var shtId = await getSheetId(shtTitle)
+  var response = await deleteSheet(shtId)
+
+  loadSheetsToDelete()
+
+
   postStatus("dgs", "Complete<br>", delCntr + " emails deleted.")
   
   modal(false)
@@ -200,7 +206,7 @@ async function deleteGmails(shtTitle) {
 
 async function removeSheet(shtTitle) {
 
-  var msg = "Ok to remove permanently" + shtTitle + " list ?"
+  var msg = "Ok to remove permanently remove the '" + shtTitle + "' list ?"
   var response = await confirm(msg);
   if (!response) return
 
