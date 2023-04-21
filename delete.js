@@ -316,7 +316,6 @@ async function onListClick() {
                 format: 'full'
             });
 
-            postStatus("gds", null, msgCntr)
 
             let msgs = responseGet.result.messages
 
@@ -328,7 +327,8 @@ async function onListClick() {
 
             let hdrs = msgs[0].payload.headers
 
-            let subject = hdrs.find(x => x.name.toLowerCase() === "subject").value
+            let findSubject = hdrs.find(x => x.name.toLowerCase() === "subject")
+            let subject = findSubject ? findSubject.value : ''
             let msgIds = msgs.map(a => a.id);
 
             listThreads.push([
@@ -343,9 +343,12 @@ async function onListClick() {
             console.log('progress', i, msgIds.length, msgCntr,  parseInt(msgCntr * 1000*60 / (new Date() - startTime)))
 
         }
+        
         var response = await appendSheetRow(listThreads, shtTitle)
 
         msgCntr += threads.length
+        postStatus("gds", null, msgCntr)
+
 
         listThreads = []
 
