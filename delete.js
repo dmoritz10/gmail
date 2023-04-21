@@ -204,6 +204,11 @@ async function removeSheet(shtTitle) {
   var response = await deleteSheet(shtId)
   console.log('response', response)
 
+  console.log('gddContainer', $('#gddContainer'))
+  console.log('gddContainer', $('#gddContainer > #gddSheetName'))
+
+  
+
   loadSheetsToDelete()
 
 }
