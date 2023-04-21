@@ -205,7 +205,7 @@ async function removeSheet(shtTitle) {
   console.log('response', response)
 
   console.log('gddContainer', $('#gddContainer'))
-  console.log('gddContainer', $('#gddContainer > #gddSheetName'))
+  console.log('gddContainer', $('#gddSheetName'))
 
   
 
