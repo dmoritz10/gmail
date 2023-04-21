@@ -30,6 +30,7 @@ async function loadSheetsToDelete() {
   var openshtArr = []
   for (var j = 0; j < sheets.length; j++) {
 
+    let shtTitle = sheets[j].properties.title
     openshtArr.push({ title: shtTitle, type: "all" })
 
   }
