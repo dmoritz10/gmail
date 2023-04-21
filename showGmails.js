@@ -42,7 +42,7 @@ async function showGmails(shtTitle) {
       .setData(sht)
       .setTableClass('table table-borderless')
       .setTrClass('d-flex')
-      .setTcClass(['text-end col h5 text-success', 'text-start col-4 h5', 'col-1'])
+      .setTcClass(['text-start col h5 text-success', 'text-start col-4 h5', 'col-1'])
       .setTdClass('py-1 pb-0 border-0 align-bottom border-bottom')
       .build('#tblGmails');
   
