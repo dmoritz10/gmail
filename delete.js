@@ -226,7 +226,7 @@ async function onListClick() {
     var label_selected = $('#gmail-label-select').val();
     var date_selected = $('#gmail-date-select').val();
     var attachments_selected = $('#gmail-has-attachment-select').val()
-    var keywords_selected = $('#gmail-keywords').val()
+    var keywords_selected = $('#gmail-keywords-select').val()
     
     
     var listSpec = {category:category_selected, label:label_selected, date:date_selected, attachment:attachments_selected, keywords:keywords_selected}
