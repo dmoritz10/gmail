@@ -265,7 +265,7 @@ async function onListClick() {
       }
         
       var search = (cat + " label:" + listSpec.label + " before:" + beforeDate 
-          + (listSpec.attachment = '' ? '' : attachment + ' '+ listSpec.keywords_selected)).trimStart();
+          + (listSpec.attachment = '' ? '' : attachment + ' '+ listSpec.keywords)).trimStart();
 
     let testShtId = await getSheetId(search)
     if (testShtId) await deleteSheet(testShtId)
