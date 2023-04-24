@@ -226,8 +226,10 @@ async function onListClick() {
     var label_selected = $('#gmail-label-select').val();
     var date_selected = $('#gmail-date-select').val();
     var attachments_selected = $('#gmail-has-attachment-select').val()
+    var keywords_selected = $('#gmail-keywords').val()
     
-    var listSpec = {category:category_selected, label:label_selected, date:date_selected, attachment:attachments_selected}
+    
+    var listSpec = {category:category_selected, label:label_selected, date:date_selected, attachment:attachments_selected, keywords:keywords_selected}
 
     if (listSpec.date == '') {
         var age = new Date()  
@@ -263,7 +265,7 @@ async function onListClick() {
       }
         
       var search = (cat + " label:" + listSpec.label + " before:" + beforeDate 
-          + (listSpec.attachment = '' ? '' : attachment)).trimStart();
+          + (listSpec.attachment = '' ? '' : attachment + ' '+ listSpec.keywords_selected)).trimStart();
 
     let testShtId = await getSheetId(search)
     if (testShtId) await deleteSheet(testShtId)
